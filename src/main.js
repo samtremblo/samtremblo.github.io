@@ -2,20 +2,31 @@ import * as THREE from 'three';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import * as CANNON from 'cannon-es';
+import * as Papa from 'papaparse';
 
 THREE.Cache.enabled = true;
 
+// Constants
+const GRAVITY = -50;
+const DESPAWN_HEIGHT = -1000;
+const TEXT_INSTANCE_COUNT = 20;
+
 let container, camera, scene, renderer, group, world, font;
 let materials = new THREE.MeshPhongMaterial({ color: 0xffffff });
+const textInstances = [];
 
-const gravity = -50;
-const textInstances = []; // Store text meshes & bodies
-const despawnHeight = -1000; // Threshold for removing text
-
+// Initialize application
 init();
-setupOverlay();
+loadProjectData();
 
 function init() {
+    setupScene();
+    setupRenderer();
+    setupPhysics();
+    loadFont();
+}
+
+function setupScene() {
     container = document.createElement('div');
     document.body.appendChild(container);
 
@@ -32,52 +43,142 @@ function init() {
 
     group = new THREE.Group();
     scene.add(group);
+}
 
-    loadFont();
-
+function setupRenderer() {
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
     window.addEventListener('resize', onWindowResize);
-    setupPhysics();
     renderer.setAnimationLoop(animate);
 }
 
-function setupOverlay() {
-    const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100vw';
-    overlay.style.height = '100vh';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.background = 'rgba(0, 0, 0, 0.5)';
-    overlay.style.backdropFilter = 'blur(10px)';
-    overlay.style.color = 'white';
-    overlay.style.fontSize = '24px';
-    overlay.style.opacity = '0';
-    overlay.style.transition = 'opacity 1s ease-in-out';
-    overlay.innerHTML = '<p>Sam Tremblay</p>';
+async function loadProjectData() {
+    try {
+        const response = await fetch('data.csv');
+        const csvText = await response.text();
+        const parsedData = Papa.parse(csvText, { header: true });
+
+        const projectDescriptions = parsedData.data.map(row => ({
+            title: row.title,
+            description: row.description,
+            images: row.images ? row.images.split(',') : []
+        }));
+
+        setupOverlay(projectDescriptions);
+    } catch (error) {
+        console.error('Error loading CSV:', error);
+    }
+}
+
+function setupOverlay(projectDescriptions) {
+    const overlay = createOverlay();
     document.body.appendChild(overlay);
 
+    const projectsContainer = createProjectsContainer(projectDescriptions);
+    overlay.appendChild(projectsContainer);
 
-    // Load external HTML file
-    fetch('overlay.html')
-        .then(response => response.text())
-        .then(html => {
-            overlay.innerHTML = html; // Insert HTML content
-            setTimeout(() => { overlay.style.opacity = '1'; }, 3200);
-        })
-        .catch(error => console.error('Error loading overlay:', error));
+    setTimeout(() => {
+        overlay.style.opacity = '1';
+    }, 3000);
+}
+
+function createOverlay() {
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    overlay.innerHTML = `
+        <div id="title">
+            <p id="overlay">I'm a <b>Fullstack Interactive Developer</b> & <b>Creative Technologist</b>, crafting immersive experiences and interactive visuals that hopefully bring a bit of fun and joy in people's life <b>:)</b></p>
+        </div>`;
+
+
+    // Footer
+    const footer = document.createElement('footer');
+    footer.innerHTML = `
+        <p>inquiries: <a href="mailto:someone@example.com">sam@stremblay.cc</a></p>`;
+    document.body.appendChild(footer);
+
+    return overlay;
+}
+
+function createProjectsContainer(projectDescriptions) {
+    const projectsContainer = document.createElement('div');
+    projectsContainer.classList.add('projects');
+
+    projectDescriptions.forEach((project) => {
+        const projectElement = createProjectElement(project);
+        projectsContainer.appendChild(projectElement);
+    });
+
+    return projectsContainer;
+}
+
+function createProjectElement(project) {
+    const projectElement = document.createElement('div');
+    projectElement.classList.add('project');
+    projectElement.style.backgroundImage = `url('${project.images[0]}')`;
+
+    const overlayText = document.createElement('div');
+    overlayText.classList.add('overlay');
+    overlayText.innerHTML = `<b>${project.title}</b>`;
+    projectElement.appendChild(overlayText);
+
+    projectElement.addEventListener('click', () => showProjectBlock(project));
+
+    return projectElement;
+}
+
+function showProjectBlock(projectData) {
+    const projectBlock = document.createElement('div');
+    projectBlock.classList.add('project-block');
+
+    const titleElement = document.createElement('h2');
+    titleElement.textContent = projectData.title;
+
+    const descriptionElement = document.createElement('p');
+    descriptionElement.innerHTML = projectData.description;
+
+    const imageContainer = createImageContainer(projectData.images);
+    const closeButton = createCloseButton(projectBlock);
+
+    projectBlock.appendChild(titleElement);
+    projectBlock.appendChild(imageContainer);
+    projectBlock.appendChild(descriptionElement);
+    projectBlock.appendChild(closeButton);
+
+    document.body.appendChild(projectBlock);
+}
+
+function createImageContainer(images) {
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+
+    images.forEach(imageUrl => {
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.classList.add('responsive-img');
+        imageContainer.appendChild(img);
+    });
+
+    return imageContainer;
+}
+
+function createCloseButton(projectBlock) {
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Close';
+    closeButton.classList.add('close-button');
+    closeButton.addEventListener('click', () => {
+        document.body.removeChild(projectBlock);
+    });
+
+    return closeButton;
 }
 
 function setupPhysics() {
     world = new CANNON.World();
-    world.gravity.set(0, gravity, 0);
+    world.gravity.set(0, GRAVITY, 0);
     world.broadphase = new CANNON.NaiveBroadphase();
     world.solver.iterations = 10;
 }
@@ -86,7 +187,7 @@ function loadFont() {
     const loader = new FontLoader();
     loader.load('fonts/helvetiker_regular.typeface.json', function (response) {
         font = response;
-        sprinkleText(20); // Create 10 small "Sam Tremblay" texts
+        sprinkleText(TEXT_INSTANCE_COUNT);
     });
 }
 
@@ -99,7 +200,6 @@ function sprinkleText(count) {
         createTextInstance("Sam Tremblay", x, y, z, 20, 1);
     }
 }
-
 function createTextInstance(text, x, y, z, size, depth) {
     const textGeo = new TextGeometry(text, {
         font: font,
@@ -111,14 +211,13 @@ function createTextInstance(text, x, y, z, size, depth) {
     });
 
     textGeo.computeBoundingBox();
-
     textGeo.center(); // Center the text geometry
 
     const centerOffset = -0.5 * (textGeo.boundingBox.max.x - textGeo.boundingBox.min.x);
 
     const textMesh = new THREE.Mesh(textGeo, materials);
     textMesh.position.set(x + centerOffset, y, z);
-    textMesh.scale.z = .2;
+    textMesh.scale.z = 0.2;
     group.add(textMesh);
 
     const textBody = new CANNON.Body({
@@ -132,27 +231,32 @@ function createTextInstance(text, x, y, z, size, depth) {
     textBody.angularVelocity.set(Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1);
 
     world.addBody(textBody);
-    textInstances.push({ textMesh, textBody });
+    textInstances.push({ textMesh, textBody, initialPosition: { x, y, z } }); // Store the initial position
 }
 
 function animate() {
     world.step(1 / 60);
 
     for (let i = textInstances.length - 1; i >= 0; i--) {
-        const { textMesh, textBody } = textInstances[i];
+        const { textMesh, textBody, initialPosition } = textInstances[i];
 
         textMesh.position.copy(textBody.position);
         textMesh.quaternion.copy(textBody.quaternion);
 
-        if (textBody.position.y < despawnHeight) {
+        // Check if the text body is below the despawn height
+        if (textBody.position.y < DESPAWN_HEIGHT) {
             group.remove(textMesh);
             world.removeBody(textBody);
-            textInstances.splice(i, 1); // Remove from array
+            // Reset to initial position
+            //Shit is too distracting...
+           // textBody.position.set(initialPosition.x, initialPosition.y, initialPosition.z);
+        //textBody.velocity.set(Math.random() * 10 - 5, -10, Math.random() * 10 - 5); // Reset velocity if needed
         }
     }
 
     renderer.render(scene, camera);
 }
+
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
