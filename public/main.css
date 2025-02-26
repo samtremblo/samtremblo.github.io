@@ -32,9 +32,12 @@ button {
 }
 
 footer {
+    z-index: 2;
     text-align: center;
     font-size: 1.2rem;
+    position: absolute;
     padding: 20px;
+    bottom: 0;
     max-width: 800px;
 }
 

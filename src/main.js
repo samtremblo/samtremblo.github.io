@@ -97,7 +97,7 @@ function createOverlay() {
     // Footer
     const footer = document.createElement('footer');
     footer.innerHTML = `
-        <p>inquiries: <a href="mailto:someone@example.com">sam@stremblay.cc</a></p>`;
+        <p>inquiries: <a href="mailto:sam@stremblay.cc">sam@stremblay.cc</a></p>`;
     document.body.appendChild(footer);
 
     return overlay;
