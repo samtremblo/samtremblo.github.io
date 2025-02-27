@@ -1,5 +1,5 @@
 export default {
     server: {
-        open: 'index.html'
+        open: './public/index.html'
     }
 };

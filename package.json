@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "A Three.js shit",
   "main": "main.js",
-  "scripts": {
-    "start": "vite",
-    "build": "vite build"
+"scripts": {
+  "start": "vite",
+  "build": "vite build",
+  "postbuild": "node fixpath.js",
+  "deploy": "npm run build && npm run postbuild && gh-pages -d dist"
+
   },
   "dependencies": {
     "cannon-es": "^0.20.0",
