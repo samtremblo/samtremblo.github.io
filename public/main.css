@@ -90,6 +90,12 @@ footer {
     max-width: 1000px;
 }
 
+@media (max-height: 1000px) {
+    .projects {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
 .project {
     position: relative;
     width: 100%;
@@ -200,8 +206,9 @@ img.responsive-img {
     .projects {
         flex-wrap: wrap;
         display: flex;
-        margin-top: -100px;
-        overflow: scroll;
+        margin-top: -40px;
+        margin-bottom: 100px;       
+         overflow: scroll;
         gap: 0;
     }
     .project {
