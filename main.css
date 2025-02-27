@@ -201,15 +201,15 @@ img.responsive-img {
     img.responsive-img {
     }
 }
-
 @media (max-width: 1000px) {
     .projects {
         flex-wrap: wrap;
         display: flex;
-        margin-top: -90px;
-        margin-bottom: 120px;       
-         overflow: scroll;
+        margin-top: -80px;
+        margin-bottom: 200px; /* Increased bottom margin for better scrolling */
+        overflow-y: auto; /* Ensure scrolling works */
         gap: 0;
+        padding-bottom: 100px; /* Extra padding to push up scrolling */
     }
     .project {
         padding-top: 20%;
