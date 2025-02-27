@@ -1,7 +1,7 @@
 {
   "name": "porfolio",
   "version": "1.0.0",
-  "description": "A Three.js shit",
+  "description": "A Three.js portfolio app i guess lol",
   "main": "main.js",
 "scripts": {
   "start": "vite",
@@ -13,7 +13,6 @@
   "dependencies": {
     "cannon-es": "^0.20.0",
     "papaparse": "^5.5.2",
-    "swiper": "^11.2.4",
     "three": "^0.160.0"
   },
   "devDependencies": {
