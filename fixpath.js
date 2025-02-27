@@ -16,4 +16,6 @@ function replaceInFiles(dir, searchValue, replaceValue) {
 }
 
 replaceInFiles('./dist', '/public/', '/');
-console.log('✅ Fixed asset paths in dist/');
+console.log('❌ NOT USED ANYMORE, SHOULD BE REMOVED');
+
+//console.log('✅ Fixed asset paths in dist/');
