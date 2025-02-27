@@ -121,13 +121,12 @@ footer {
 }
 
 img.responsive-img {
-    width: 100%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 500px;
     height: auto;
     border-radius: 8px;
     object-fit: contain;
 }
-
 .project-block {
     position: fixed;
     top: 0;
@@ -137,27 +136,59 @@ img.responsive-img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Align items to the top */
     background: rgba(0, 0, 0, 0.9);
     z-index: 1000;
     color: white;
     padding: 20px;
-    overflow: auto;
+    overflow: scroll;
     box-sizing: border-box;
+    text-align: center; /* Center the text */
+}
+
+.project-block h2 {
+    margin: 0; /* Remove default margin for better alignment */
+}
+
+.project-block p {
+    margin: 20px 0; /* Add spacing around the description */
+    max-width: 700px;
+    text-align: start;
+}
+
+
+.image-container {
+    display: flex; /* Align images horizontally */
+    justify-content: space-evenly; /* Evenly distribute images */
+    flex-wrap: wrap; /* Allow images to wrap if necessary */
+    width: 100%; /* Full width to accommodate spacing */
+    max-width: 800px; /* Limit width for better layout */
+}
+
+.image-container img {
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px; /* Add some spacing between images */
 }
 
 .close-button {
     margin-top: 20px;
-    padding: 10px;
-    background-color: #fff;
+    padding: 10px 20px; /* Increase padding for better appearance */
+    background-color: #ff0; /* Change color to stand out */
     color: #333;
     border: none;
     cursor: pointer;
+    border-radius: 4px; /* Round corners */
+    font-weight: bold; /* Make the text bold */
 }
+
+.close-button:hover {
+    background-color: #fff; /* Change background on hover */
+}
+
 
 @media (max-width: 1300px) {
     img.responsive-img {
-        max-width: 44%; 
     }
 }
 

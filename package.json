@@ -10,6 +10,7 @@
   "dependencies": {
     "cannon-es": "^0.20.0",
     "papaparse": "^5.5.2",
+    "swiper": "^11.2.4",
     "three": "^0.160.0"
   },
   "devDependencies": {

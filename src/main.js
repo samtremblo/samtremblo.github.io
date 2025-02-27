@@ -3,6 +3,7 @@ import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import * as CANNON from 'cannon-es';
 import * as Papa from 'papaparse';
+import * as Swiper from 'swiper';
 
 THREE.Cache.enabled = true;
 
@@ -143,13 +144,16 @@ function showProjectBlock(projectData) {
     const imageContainer = createImageContainer(projectData.images);
     const closeButton = createCloseButton(projectBlock);
 
+    // Aligning items in a column
     projectBlock.appendChild(titleElement);
-    projectBlock.appendChild(imageContainer);
-    projectBlock.appendChild(descriptionElement);
     projectBlock.appendChild(closeButton);
+
+    projectBlock.appendChild(descriptionElement);
+    projectBlock.appendChild(imageContainer);
 
     document.body.appendChild(projectBlock);
 }
+
 
 function createImageContainer(images) {
     const imageContainer = document.createElement('div');
@@ -166,9 +170,8 @@ function createImageContainer(images) {
 }
 
 function createCloseButton(projectBlock) {
-    const closeButton = document.createElement('button');
+    const closeButton = document.createElement('a');
     closeButton.textContent = 'Close';
-    closeButton.classList.add('close-button');
     closeButton.addEventListener('click', () => {
         document.body.removeChild(projectBlock);
     });
