@@ -17,20 +17,14 @@ let materials = new THREE.MeshPhongMaterial({ color: 0xffffff });
 const textInstances = [];
 
 // Initialize application
-init();
-loadProjectData();
+//loadProjectData();
 
-function init() {
-    setupScene();
-    setupRenderer();
-    setupPhysics();
-    loadFont();
-}
+init();
+
 
 function setupScene() {
     container = document.createElement('div');
     document.body.appendChild(container);
-
     camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1500);
     camera.position.set(0, 400, 700);
     camera.lookAt(0, 100, 0);
@@ -56,6 +50,15 @@ function setupRenderer() {
     renderer.setAnimationLoop(animate);
 }
 
+async function init() {
+    const projectDescriptions = await loadProjectData(); // Load and get project data
+    setupOverlay(projectDescriptions); // Set up the overlay with project data
+    setupScene(); // Now that data is ready, set up the scene
+    setupRenderer(); // Set up the renderer
+    setupPhysics(); // Set up physics
+    loadFont(); // Load the font for text
+}
+
 async function loadProjectData() {
     try {
         const response = await fetch('data.csv');
@@ -65,12 +68,14 @@ async function loadProjectData() {
         const projectDescriptions = parsedData.data.map(row => ({
             title: row.title,
             description: row.description,
-            images: row.images ? row.images.split(',') : []
-        }));
+            images: row.images ? row.images.split(',') : [],
+            year: parseInt(row.year, 10) || 0 // Ensure year is a number
+        })).sort((a, b) => b.year - a.year); // Sort projects by year, most recent first
 
-        setupOverlay(projectDescriptions);
+        return projectDescriptions; // Return the sorted project data
     } catch (error) {
         console.error('Error loading CSV:', error);
+        return []; // Return an empty array in case of an error
     }
 }
 
@@ -85,6 +90,7 @@ function setupOverlay(projectDescriptions) {
         overlay.style.opacity = '1';
     }, 3000);
 }
+
 
 function createOverlay() {
     const overlay = document.createElement('div');
@@ -170,8 +176,9 @@ function createImageContainer(images) {
 }
 
 function createCloseButton(projectBlock) {
-    const closeButton = document.createElement('a');
+    const closeButton = document.createElement('button');
     closeButton.textContent = 'Close';
+    closeButton.classList.add('close-button');
     closeButton.addEventListener('click', () => {
         document.body.removeChild(projectBlock);
     });
