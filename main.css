@@ -207,7 +207,7 @@ img.responsive-img {
         flex-wrap: wrap;
         display: flex;
         margin-top: -90px;
-        margin-bottom: 90px;       
+        margin-bottom: 120px;       
          overflow: scroll;
         gap: 0;
     }
