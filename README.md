@@ -48,7 +48,3 @@ This will:
 
 ---
 
-## Live Demo  
-
-**[Icitte!](stremblay.cc)**  
-
