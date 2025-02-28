@@ -1,10 +1,4 @@
-# 🚀 Simple Three.js Portfolio  
-
-A **sleek**, **interactive**, and **lightning-fast** portfolio built with **Three.js** and powered by **Vite**. Deployed with **GitHub Pages CI/CD**! 🎯  
-
----
-
-
+# 🪄 Simple Three.js Portfolio 🪄
 ## Tech Stack  
 
 - **Three.js** – for mind-blowing 3D visuals ✨  
