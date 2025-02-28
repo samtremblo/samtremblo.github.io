@@ -48,7 +48,7 @@ This will:
 
 ---
 
-## 🌎 Live Demo  
+## Live Demo  
 
-👉 **[Check it out here!](stremblay.cc)**  
+**[Icitte!](stremblay.cc)**  
 
