@@ -5,16 +5,16 @@ A **sleek**, **interactive**, and **lightning-fast** portfolio built with **Thre
 ---
 
 
-## 🛠 Tech Stack  
+## Tech Stack  
 
 - **Three.js** – for mind-blowing 3D visuals ✨  
 - **Vite** – for packaging that is fast af 🏃💨  
 - **GitHub Pages** – instant deployment and 🆓
-- 
+- **My smile** - makes you happy 😊
 
 ---
 
-## 🔥 Development Mode  
+## Development Mode  
 
 Start the local dev server with:  
 
@@ -23,11 +23,11 @@ npm i
 npm start  
 ```
 
-This will fire up **Vite** for an ultra-fast dev experience. 🚀  
+This will fire up **Vite** 
 
 ---
 
-## 📦 Build for Production  
+## Build for Production  
 
 Generate a production-ready build:  
 
@@ -39,7 +39,7 @@ vite outputs by default in the `dist/` folder.
 
 ---
 
-## 🚀 Deploy to GitHub Pages  
+## Deploy to GitHub Pages  
 
 One command to **rule them all**:  
 
