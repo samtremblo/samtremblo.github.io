@@ -4,7 +4,7 @@ async function createCNAME() {
   const fs = require('fs');
 const path = require('path');
 
-const cnameContent = 'stremblay.cc';
+const cnameContent = 'www.stremblay.cc';
 const cnamePath = path.join(__dirname, 'dist', 'CNAME');
 
 try {
