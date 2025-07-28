@@ -11,7 +11,7 @@
   {
     "id": "dnd-experience",
     "title": "Dungeons & Dragons Experience",
-    "description": "D&D Experience is an immersive RFID-powered parkour game where players select a class at the start and engage in a series of interactive challenges, with their progress tracked via RFID bracelets.\n\nDesigned vibrant marketing. Coded and integrated on behalf of RodeoFX, the experience combines technology and gameplay to create an engaging adventure.\n\n**My contribution includes:**\n- **Software Architecture Design and Development**\n- **Front-End & Back-End Development**\n- **Electronics Programming**",
+    "description": "D&D Experience is an immersive RFID-powered immersive experience where players select a class at the start and engage in a series of interactive challenges, with their progress tracked via RFID bracelets.\n\nDesigned vibrant marketing. Coded and integrated on behalf of RodeoFX, the experience combines technology and gameplay to create an engaging adventure.\n\n**My contribution includes:**\n- **Software Architecture Design and Development**\n- **Front-End & Back-End Development**\n- **Electronics Programming**",
     "images": ["img/entry.webp", "img/lava.webp", "img/roper.webp", "img/beholder.webp"],
     "year": 2025,
     "tags": ["RFID", "interactive", "gaming", "electronics"],
