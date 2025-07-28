@@ -116,6 +116,12 @@ function createProjectCard(project) {
         updateURL(project.id);
     });
     
+    // Store original project data for game reset
+    projectCard._originalProject = project;
+    
+    // Add unique identifier for game collision detection
+    projectCard.setAttribute('data-project-id', project.id || project.title);
+    
     return projectCard;
 }
 
@@ -478,12 +484,16 @@ function processCommand(command) {
         } else {
             window.addCommandToHistory('flip off', 'response');
         }
+    } else if (command === 'game') {
+        window.addCommandToHistory('game started - use arrow keys to move, space to shoot', 'response');
+        startGame();
     } else if (command === 'help') {
         window.addCommandToHistory('commands:', 'response');
         window.addCommandToHistory('  whoami', 'response');
         window.addCommandToHistory('  woodstock', 'response');
         window.addCommandToHistory('  mirror', 'response');
         window.addCommandToHistory('  flip', 'response');
+        window.addCommandToHistory('  game', 'response');
         window.addCommandToHistory('  help', 'response');
         window.addCommandToHistory('  clear', 'response');
     } else if (command === 'clear') {
@@ -563,7 +573,7 @@ function showTemporaryModeIndicator() {
     }, 2000);
 }
 
-// Add CSS for the temporary indicator animation
+// Add CSS for animations
 const style = document.createElement('style');
 style.textContent = `
     @keyframes temp-indicator-pulse {
@@ -571,5 +581,573 @@ style.textContent = `
         50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
         100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
+    
+    @keyframes screen-shake {
+        0%, 100% { transform: translate(0, 0); }
+        10% { transform: translate(-2px, -1px); }
+        20% { transform: translate(2px, 1px); }
+        30% { transform: translate(-1px, 2px); }
+        40% { transform: translate(1px, -2px); }
+        50% { transform: translate(-2px, 1px); }
+        60% { transform: translate(2px, -1px); }
+        70% { transform: translate(-1px, -2px); }
+        80% { transform: translate(1px, 2px); }
+        90% { transform: translate(-2px, -1px); }
+    }
+    
+    @keyframes impact-flash {
+        0% { 
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+        }
+        50% { 
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0.8;
+        }
+        100% { 
+            transform: translate(-50%, -50%) scale(3);
+            opacity: 0;
+        }
+    }
 `;
 document.head.appendChild(style);
+
+// Game functionality
+let gameActive = false;
+let spaceship = null;
+let bullets = [];
+let gameKeyHandler = null;
+let keys = {};
+let spaceshipAngle = 0;
+let spaceshipX = 0;
+let spaceshipY = 0;
+let spaceshipVx = 0;
+let spaceshipVy = 0;
+let gameElapsedTime = 0;
+let gameTimer = 30;
+let gameInterval = null;
+let gameStartTime = 0;
+let hitProjects = new Set();
+let gameUI = null;
+
+function startGame() {
+    if (gameActive) return;
+    
+    gameActive = true;
+    gameElapsedTime = 0;
+    gameTimer = 30;
+    gameStartTime = Date.now();
+    hitProjects.clear();
+    
+    // Hide footer during game
+    const footer = document.querySelector('footer');
+    if (footer) {
+        footer.style.display = 'none';
+    }
+    
+    // Reset all project cards to their original state
+    resetAllProjects();
+    
+    createSpaceship();
+    createGameUI();
+    setupGameControls();
+    startGameTimer();
+    gameLoop();
+}
+
+function resetAllProjects() {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        // Reset visual styling
+        card.style.opacity = '';
+        card.style.filter = '';
+        card.style.border = '';
+        card.style.background = '';
+        card.style.minHeight = '';
+        card.style.height = '';
+        
+        // Restore original content if it was destroyed
+        if (card._originalProject) {
+            const project = card._originalProject;
+            
+            const title = card.querySelector('.project-title');
+            const year = card.querySelector('.project-year');
+            const client = card.querySelector('.project-client');
+            const description = card.querySelector('.project-description');
+            const thumbnail = card.querySelector('.project-thumbnail');
+            
+            // Restore original content
+            if (title) {
+                title.textContent = project.title;
+                title.style.color = '';
+                title.style.textShadow = '';
+            }
+            if (year) {
+                year.textContent = project.year;
+            }
+            if (client) {
+                if (project.client) {
+                    client.textContent = project.client;
+                    client.style.display = 'block';
+                } else {
+                    client.style.display = 'none';
+                }
+            }
+            if (description) {
+                // Get first paragraph or truncate description
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = project.description;
+                const firstP = tempDiv.querySelector('p');
+                const shortDesc = firstP ? firstP.textContent : tempDiv.textContent;
+                description.textContent = shortDesc.length > 120 ? 
+                    shortDesc.substring(0, 120) + '...' : shortDesc;
+            }
+            if (thumbnail && project.images && project.images.length > 0) {
+                thumbnail.src = project.images[0];
+                thumbnail.alt = project.title;
+                thumbnail.style.opacity = '';
+            }
+        }
+    });
+}
+
+function createGameUI() {
+    gameUI = document.createElement('div');
+    gameUI.id = 'game-ui';
+    gameUI.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 18px;
+        color: #00ff00;
+        z-index: 5001;
+        user-select: none;
+        pointer-events: none;
+        text-shadow: 0 0 10px #00ff00;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        border-radius: 8px;
+        border: 2px solid #00ff00;
+    `;
+    
+    updateGameUI();
+    document.body.appendChild(gameUI);
+}
+
+function updateGameUI() {
+    if (gameUI) {
+        // Calculate elapsed time
+        gameElapsedTime = ((Date.now() - gameStartTime) / 1000);
+        const elapsedDisplay = gameElapsedTime.toFixed(1);
+        
+        gameUI.innerHTML = `
+            <div>TIME: ${elapsedDisplay}s</div>
+            <div>REMAINING: ${gameTimer}s</div>
+            <div>TARGETS: ${hitProjects.size}/${projectsData.length}</div>
+            <div style="font-size: 12px; margin-top: 5px;">ESC to quit</div>
+        `;
+    }
+}
+
+function startGameTimer() {
+    gameInterval = setInterval(() => {
+        gameTimer--;
+        updateGameUI();
+        
+        if (gameTimer <= 0) {
+            endGame();
+        }
+    }, 1000);
+}
+
+function createSpaceship() {
+    spaceship = document.createElement('div');
+    spaceship.id = 'spaceship';
+    spaceship.innerHTML = '▲';
+    spaceship.style.cssText = `
+        position: fixed;
+        font-size: 24px;
+        color: #00ff00;
+        z-index: 5000;
+        user-select: none;
+        pointer-events: none;
+        text-shadow: 0 0 10px #00ff00;
+        transition: none;
+    `;
+    
+    // Initialize position
+    spaceshipX = window.innerWidth / 2;
+    spaceshipY = window.innerHeight - 100;
+    updateSpaceshipPosition();
+    
+    document.body.appendChild(spaceship);
+}
+
+function updateSpaceshipPosition() {
+    spaceship.style.left = spaceshipX + 'px';
+    spaceship.style.top = spaceshipY + 'px';
+    spaceship.style.transform = `translate(-50%, -50%) rotate(${spaceshipAngle}deg)`;
+}
+
+function setupGameControls() {
+    const keyDownHandler = (e) => {
+        if (!gameActive) return;
+        keys[e.key] = true;
+        
+        if (e.key === ' ') {
+            e.preventDefault();
+            shoot();
+        }
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            endGame();
+        }
+    };
+    
+    const keyUpHandler = (e) => {
+        if (!gameActive) return;
+        keys[e.key] = false;
+    };
+    
+    document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keyup', keyUpHandler);
+    
+    // Store both handlers for cleanup
+    gameKeyHandler = { keyDownHandler, keyUpHandler };
+}
+
+function shoot() {
+    const bullet = document.createElement('div');
+    bullet.innerHTML = '•';
+    
+    // Calculate bullet direction based on spaceship angle
+    const angleRad = (spaceshipAngle - 90) * Math.PI / 180; // -90 because ship points up by default
+    const bulletSpeed = 15;
+    const bulletVx = Math.cos(angleRad) * bulletSpeed;
+    const bulletVy = Math.sin(angleRad) * bulletSpeed;
+    
+    bullet.style.cssText = `
+        position: fixed;
+        left: ${spaceshipX}px;
+        top: ${spaceshipY}px;
+        font-size: 16px;
+        color: #ffff00;
+        z-index: 4999;
+        user-select: none;
+        pointer-events: none;
+        text-shadow: 0 0 5px #ffff00;
+        transform: translate(-50%, -50%);
+    `;
+    
+    bullet.vx = bulletVx;
+    bullet.vy = bulletVy;
+    bullet.x = spaceshipX;
+    bullet.y = spaceshipY;
+    
+    document.body.appendChild(bullet);
+    bullets.push(bullet);
+}
+
+function gameLoop() {
+    if (!gameActive) return;
+    
+    // Handle spaceship movement
+    const rotationSpeed = 3;
+    const acceleration = 0.3;
+    const friction = 0.95;
+    const maxSpeed = 8;
+    
+    if (keys['ArrowLeft']) {
+        spaceshipAngle -= rotationSpeed;
+    }
+    if (keys['ArrowRight']) {
+        spaceshipAngle += rotationSpeed;
+    }
+    if (keys['ArrowUp']) {
+        const angleRad = (spaceshipAngle - 90) * Math.PI / 180;
+        spaceshipVx += Math.cos(angleRad) * acceleration;
+        spaceshipVy += Math.sin(angleRad) * acceleration;
+    }
+    if (keys['ArrowDown']) {
+        spaceshipVx *= 0.9;
+        spaceshipVy *= 0.9;
+    }
+    
+    // Apply friction and speed limit
+    spaceshipVx *= friction;
+    spaceshipVy *= friction;
+    const speed = Math.sqrt(spaceshipVx * spaceshipVx + spaceshipVy * spaceshipVy);
+    if (speed > maxSpeed) {
+        spaceshipVx = (spaceshipVx / speed) * maxSpeed;
+        spaceshipVy = (spaceshipVy / speed) * maxSpeed;
+    }
+    
+    // Update position with boundary checking
+    spaceshipX += spaceshipVx;
+    spaceshipY += spaceshipVy;
+    
+    spaceshipX = Math.max(20, Math.min(window.innerWidth - 20, spaceshipX));
+    spaceshipY = Math.max(20, Math.min(window.innerHeight - 120, spaceshipY));
+    
+    updateSpaceshipPosition();
+    
+    // Move bullets
+    bullets.forEach((bullet, index) => {
+        bullet.x += bullet.vx;
+        bullet.y += bullet.vy;
+        
+        bullet.style.left = bullet.x + 'px';
+        bullet.style.top = bullet.y + 'px';
+        
+        // Remove bullets that are off screen
+        if (bullet.x < 0 || bullet.x > window.innerWidth || 
+            bullet.y < 0 || bullet.y > window.innerHeight) {
+            bullet.remove();
+            bullets.splice(index, 1);
+            return;
+        }
+        
+        // Check collision with project cards
+        const bulletRect = bullet.getBoundingClientRect();
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        projectCards.forEach(card => {
+            const cardRect = card.getBoundingClientRect();
+            if (bulletRect.left < cardRect.right && 
+                bulletRect.right > cardRect.left && 
+                bulletRect.top < cardRect.bottom && 
+                bulletRect.bottom > cardRect.top) {
+                
+                // Get project identifier from data attribute
+                const projectId = card.getAttribute('data-project-id');
+                
+                // Only hit if this project hasn't been hit yet
+                if (!hitProjects.has(projectId) && projectId) {
+                    hitProjects.add(projectId);
+                    updateGameUI();
+                    
+                    // Hit! Break the tile
+                    breakTile(card);
+                    
+                    // Check if all projects have been hit
+                    if (hitProjects.size >= projectsData.length) {
+                        // All targets destroyed! End game immediately
+                        setTimeout(() => {
+                            endGame();
+                        }, 500);
+                    }
+                    
+                    // Remove bullet only if we hit a valid target
+                    bullet.remove();
+                    bullets.splice(index, 1);
+                }
+                // If project was already hit, bullet passes through (no removal)
+            }
+        });
+    });
+    
+    requestAnimationFrame(gameLoop);
+}
+
+function breakTile(card) {
+    // Store original position and properties
+    const rect = card.getBoundingClientRect();
+    
+    // Create screen shake effect
+    document.body.style.animation = 'screen-shake 0.3s ease-out';
+    setTimeout(() => {
+        document.body.style.animation = '';
+    }, 300);
+    
+    // Create white impact flash
+    const flash = document.createElement('div');
+    flash.style.cssText = `
+        position: fixed;
+        left: ${rect.left + rect.width/2}px;
+        top: ${rect.top + rect.height/2}px;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+        border-radius: 50%;
+        z-index: 4999;
+        pointer-events: none;
+        transform: translate(-50%, -50%) scale(0);
+        animation: impact-flash 0.4s ease-out;
+    `;
+    document.body.appendChild(flash);
+    setTimeout(() => flash.remove(), 400);
+    
+    // Extract and explode the content with white particles
+    explodeCardContent(card, rect);
+    
+    // Clear the card content but keep the frame and height
+    const title = card.querySelector('.project-title');
+    const year = card.querySelector('.project-year');
+    const client = card.querySelector('.project-client');
+    const description = card.querySelector('.project-description');
+    const thumbnail = card.querySelector('.project-thumbnail');
+    
+    // Store original height before clearing content
+    const originalHeight = card.offsetHeight;
+    
+    if (title) title.innerHTML = '&nbsp;'; // Invisible space to maintain height
+    if (year) year.innerHTML = '&nbsp;';
+    if (client) client.innerHTML = '&nbsp;';
+    if (description) description.innerHTML = '&nbsp;';
+    if (thumbnail) thumbnail.style.opacity = '0';
+    
+    // Force maintain the original height
+    card.style.minHeight = originalHeight + 'px';
+    card.style.height = originalHeight + 'px';
+    
+    // Add destroyed card styling with white theme
+    card.style.opacity = '0.4';
+    card.style.filter = 'grayscale(1) brightness(1.5)';
+    card.style.border = '2px solid rgba(255, 255, 255, 0.3)';
+    card.style.background = 'rgba(255, 255, 255, 0.1)';
+}
+
+function explodeCardContent(card, rect) {
+    // Extract content from the card
+    const title = card.querySelector('.project-title')?.textContent || '';
+    const year = card.querySelector('.project-year')?.textContent || '';
+    const client = card.querySelector('.project-client')?.textContent || '';
+    const description = card.querySelector('.project-description')?.textContent || '';
+    
+    // Create particles from the content
+    const particles = [title, year, client, ...description.split(' ').slice(0, 8)].filter(Boolean);
+    
+    particles.forEach((text, index) => {
+        if (!text.trim()) return;
+        
+        const particle = document.createElement('div');
+        particle.textContent = text;
+        particle.style.cssText = `
+            position: fixed;
+            left: ${rect.left + rect.width/2}px;
+            top: ${rect.top + rect.height/2}px;
+            font-size: ${10 + Math.random() * 10}px;
+            color: #ffffff;
+            z-index: 4998;
+            user-select: none;
+            pointer-events: none;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ffffff;
+            transform: translate(-50%, -50%);
+        `;
+        
+        document.body.appendChild(particle);
+        
+        // Animate particle explosion with physics
+        const angle = (index / particles.length) * Math.PI * 2;
+        const baseSpeed = 150 + Math.random() * 100;
+        let vx = Math.cos(angle) * baseSpeed * 0.02;
+        let vy = Math.sin(angle) * baseSpeed * 0.02;
+        
+        let x = rect.left + rect.width/2;
+        let y = rect.top + rect.height/2;
+        let opacity = 1;
+        let scale = 1;
+        const gravity = 0.3;
+        const friction = 0.98;
+        
+        const animateParticle = () => {
+            // Apply gravity
+            vy += gravity;
+            
+            // Update position
+            x += vx;
+            y += vy;
+            
+            // Apply friction
+            vx *= friction;
+            vy *= friction;
+            
+            // Fade and scale
+            opacity -= 0.015;
+            scale += 0.02;
+            
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.opacity = opacity;
+            particle.style.transform = `translate(-50%, -50%) scale(${scale}) rotate(${scale * 180}deg)`;
+            
+            // Bounce off bottom
+            if (y > window.innerHeight - 20 && vy > 0) {
+                vy *= -0.6;
+                y = window.innerHeight - 20;
+            }
+            
+            // Bounce off sides
+            if ((x < 20 && vx < 0) || (x > window.innerWidth - 20 && vx > 0)) {
+                vx *= -0.6;
+            }
+            
+            if (opacity > 0 && y < window.innerHeight + 100) {
+                requestAnimationFrame(animateParticle);
+            } else {
+                particle.remove();
+            }
+        };
+        
+        requestAnimationFrame(animateParticle);
+    });
+}
+
+
+function endGame() {
+    gameActive = false;
+    
+    // Clear timer
+    if (gameInterval) {
+        clearInterval(gameInterval);
+        gameInterval = null;
+    }
+    
+    // Remove game elements
+    if (spaceship) {
+        spaceship.remove();
+        spaceship = null;
+    }
+    
+    if (gameUI) {
+        gameUI.remove();
+        gameUI = null;
+    }
+    
+    bullets.forEach(bullet => bullet.remove());
+    bullets = [];
+    
+    if (gameKeyHandler) {
+        document.removeEventListener('keydown', gameKeyHandler.keyDownHandler);
+        document.removeEventListener('keyup', gameKeyHandler.keyUpHandler);
+        gameKeyHandler = null;
+    }
+    
+    // Clear keys state
+    keys = {};
+    
+    // Show footer again
+    const footer = document.querySelector('footer');
+    if (footer) {
+        footer.style.display = '';
+    }
+    
+    // Show final results
+    const totalProjects = projectsData.length;
+    const hitCount = hitProjects.size;
+    const finalTime = ((Date.now() - gameStartTime) / 1000).toFixed(1);
+    
+    if (hitCount >= totalProjects) {
+        window.addCommandToHistory(`ALL TARGETS DESTROYED IN ${finalTime}s!`, 'response');
+        window.addCommandToHistory(`amazing speed! try to beat your record`, 'response');
+    } else {
+        window.addCommandToHistory(`game ended - time: ${finalTime}s`, 'response');
+        window.addCommandToHistory(`targets destroyed: ${hitCount}/${totalProjects}`, 'response');
+    }
+    
+    // Reset all projects back to original state
+    resetAllProjects();
+}
