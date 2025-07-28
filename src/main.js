@@ -20,7 +20,7 @@ async function init() {
 
 async function loadProjectData() {
     try {
-        const response = await fetch('public/data.json');
+        const response = await fetch('./data.json');
         const projectData = await response.json();
 
         // Process markdown in descriptions and sort by year
