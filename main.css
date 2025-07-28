@@ -102,12 +102,12 @@ footer {
     padding-top: 100%; /* Maintain square aspect ratio */
     background-size: cover;
     background-position: center;
-    border-radius: 0;
+    border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    border-color: #ff0;
-    border-width: 10px;
-    background-color: #333; /* Fallback color */
+    border: 2px solid transparent;
+    background-color: #333;
+    transition: all 0.3s ease;
 }
 
 .project .overlay {
@@ -116,14 +116,41 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 18px;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: all 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.project-info {
+    text-align: center;
+    width: 100%;
+}
+
+.project-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.project-year {
+    display: block;
+    font-size: 14px;
+    color: #ff0;
+    margin-bottom: 4px;
+}
+
+.project-client {
+    display: block;
+    font-size: 12px;
+    color: #ccc;
+    font-style: italic;
 }
 
 img.responsive-img {
@@ -142,39 +169,117 @@ img.responsive-img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Align items to the top */
-    background: rgba(0, 0, 0, 0.9);
+    justify-content: flex-start;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
     z-index: 1000;
     color: white;
-    padding: 20px;
-    overflow: scroll;
+    padding: 40px 20px;
+    overflow-y: auto;
     box-sizing: border-box;
-    text-align: center; /* Center the text */
 }
 
-.project-block h2 {
-    margin: 0; /* Remove default margin for better alignment */
+.project-header {
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 800px;
 }
 
-.project-block p {
-    margin: 20px 0; /* Add spacing around the description */
-    max-width: 700px;
-    text-align: start;
+.project-header h2 {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.project-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-meta .project-year {
+    font-size: 1.2rem;
+    color: #ff0;
+    font-weight: bold;
+}
+
+.project-meta .project-client {
+    font-size: 1rem;
+    color: #ccc;
+    font-style: italic;
+}
+
+.project-tags {
+    display: none !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.tag {
+    background: rgba(255, 255, 0, 0.2);
+    color: #ff0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 0, 0.3);
+}
+
+.project-description {
+    max-width: 800px;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.project-description h1,
+.project-description h2,
+.project-description h3 {
+    color: #ff0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.project-description p {
+    margin: 15px 0;
+}
+
+.project-description strong {
+    color: #ff0;
+}
+
+.project-description a {
+    color: #ff0;
+    text-decoration: underline;
+}
+
+.project-description a:hover {
+    color: #fff;
 }
 
 
 .image-container {
-    display: flex; /* Align images horizontally */
-    justify-content: space-evenly; /* Evenly distribute images */
-    flex-wrap: wrap; /* Allow images to wrap if necessary */
-    width: 100%; /* Full width to accommodate spacing */
-    max-width: 800px; /* Limit width for better layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 100px;
 }
 
 .image-container img {
-    max-width: 100%; /* Ensure images are responsive */
-    height: auto; /* Maintain aspect ratio */
-    margin: 10px; /* Add some spacing between images */
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+    transform: scale(1.02);
 }
 
 .close-button {
@@ -203,17 +308,31 @@ img.responsive-img {
 }
 @media (max-width: 1000px) {
     .projects {
-        flex-wrap: wrap;
-        display: flex;
-        margin-top: -80px;
-        margin-bottom: 200px; /* Increased bottom margin for better scrolling */
-        overflow-y: auto; /* Ensure scrolling works */
-        gap: 0;
-        padding-bottom: 100px; /* Extra padding to push up scrolling */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        margin-top: -60px;
+        margin-bottom: 150px;
+        gap: 15px;
+        padding: 15px;
     }
-    .project {
-        padding-top: 20%;
+    
+    .project-header h2 {
+        font-size: 2rem;
     }
+    
+    .project-description {
+        font-size: 0.95rem;
+    }
+    
+    .image-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+.project:hover {
+    transform: translateY(-4px);
+    border-color: #ff0;
+    box-shadow: 0 8px 25px rgba(255, 255, 0, 0.2);
 }
 
 .project:hover .overlay {
@@ -222,6 +341,37 @@ img.responsive-img {
 
 @media all and (max-width: 640px) {
     .projects {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .project-header {
+        padding: 0 10px;
+    }
+    
+    .project-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .project-block {
+        padding: 20px 15px;
+    }
+    
+    .project-description {
+        font-size: 0.9rem;
+        padding: 0 5px;
+    }
+    
+    .project-info h3 {
+        font-size: 14px;
+    }
+    
+    .project-year {
+        font-size: 12px;
+    }
+    
+    .project-client {
+        font-size: 11px;
     }
 }

@@ -10,7 +10,17 @@
         body { margin: 0; overflow: hidden; }
         canvas { display: block; }
     </style>
-  <script type="module" crossorigin src="/assets/index-CG1tS7iN.js"></script>
+    <script>
+        // Handle GitHub Pages 404 redirects for client-side routing
+        (function() {
+            var redirect = sessionStorage.getItem('redirect');
+            if (redirect) {
+                sessionStorage.removeItem('redirect');
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
+  <script type="module" crossorigin src="/assets/index-C5zFXde2.js"></script>
 </head>
 <body>
     
