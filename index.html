@@ -10,6 +10,16 @@
         body { margin: 0; overflow: hidden; }
         canvas { display: block; }
     </style>
+    <script>
+        // Handle GitHub Pages 404 redirects for client-side routing
+        (function() {
+            var redirect = sessionStorage.getItem('redirect');
+            if (redirect) {
+                sessionStorage.removeItem('redirect');
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
 </head>
 <body>
     <script type="module" src="/src/main.js"></script>

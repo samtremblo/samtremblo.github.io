@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import * as CANNON from 'cannon-es';
-import * as Papa from 'papaparse';
+import { marked } from 'marked';
 import * as Swiper from 'swiper';
 
 THREE.Cache.enabled = true;
@@ -15,6 +15,7 @@ const TEXT_INSTANCE_COUNT = 20;
 let container, camera, scene, renderer, group, world, font;
 let materials = new THREE.MeshPhongMaterial({ color: 0xffffff });
 const textInstances = [];
+let projectsData = [];
 
 // Initialize application
 //loadProjectData();
@@ -51,31 +52,38 @@ function setupRenderer() {
 }
 
 async function init() {
-    const projectDescriptions = await loadProjectData(); // Load and get project data
-    setupOverlay(projectDescriptions); // Set up the overlay with project data
+    projectsData = await loadProjectData(); // Load and get project data
+    setupOverlay(projectsData); // Set up the overlay with project data
     setupScene(); // Now that data is ready, set up the scene
     setupRenderer(); // Set up the renderer
     setupPhysics(); // Set up physics
     loadFont(); // Load the font for text
+    
+    // Handle initial URL routing
+    handleInitialRoute();
+    
+    // Listen for browser back/forward navigation
+    window.addEventListener('popstate', handlePopState);
 }
 
 async function loadProjectData() {
     try {
-        const response = await fetch('data.csv');
-        const csvText = await response.text();
-        const parsedData = Papa.parse(csvText, { header: true });
+        const response = await fetch('data.json');
+        const projectData = await response.json();
 
-        const projectDescriptions = parsedData.data.map(row => ({
-            title: row.title,
-            description: row.description,
-            images: row.images ? row.images.split(',') : [],
-            year: parseInt(row.year, 10) || 0 // Ensure year is a number
-        })).sort((a, b) => b.year - a.year); // Sort projects by year, most recent first
+        // Process markdown in descriptions and sort by year
+        const projectDescriptions = projectData
+            .map(project => ({
+                ...project,
+                description: marked(project.description),
+                year: parseInt(project.year, 10) || 0
+            }))
+            .sort((a, b) => b.year - a.year);
 
-        return projectDescriptions; // Return the sorted project data
+        return projectDescriptions;
     } catch (error) {
-        console.error('Error loading CSV:', error);
-        return []; // Return an empty array in case of an error
+        console.error('Error loading project data:', error);
+        return [];
     }
 }
 
@@ -129,35 +137,72 @@ function createProjectElement(project) {
 
     const overlayText = document.createElement('div');
     overlayText.classList.add('overlay');
-    overlayText.innerHTML = `<b>${project.title}</b>`;
+    overlayText.innerHTML = `
+        <div class="project-info">
+            <h3>${project.title}</h3>
+            <span class="project-year">${project.year}</span>
+            ${project.client ? `<span class="project-client">${project.client}</span>` : ''}
+        </div>
+    `;
     projectElement.appendChild(overlayText);
 
-    projectElement.addEventListener('click', () => showProjectBlock(project));
+    projectElement.addEventListener('click', () => {
+        showProjectBlock(project);
+        updateURL(project.id);
+    });
 
     return projectElement;
 }
 
 function showProjectBlock(projectData) {
+    // Close any existing project block first
+    const existingBlock = document.querySelector('.project-block');
+    if (existingBlock) {
+        // Clean up keyboard listener if it exists
+        if (existingBlock.keyHandler) {
+            document.removeEventListener('keydown', existingBlock.keyHandler);
+        }
+        document.body.removeChild(existingBlock);
+    }
+    
     const projectBlock = document.createElement('div');
     projectBlock.classList.add('project-block');
 
-    const titleElement = document.createElement('h2');
-    titleElement.textContent = projectData.title;
+    const headerElement = document.createElement('div');
+    headerElement.classList.add('project-header');
+    headerElement.innerHTML = `
+        <h2>${projectData.title}</h2>
+        <div class="project-meta">
+            <span class="project-year">${projectData.year}</span>
+            ${projectData.client ? `<span class="project-client">${projectData.client}</span>` : ''}
+            ${projectData.tags ? `<div class="project-tags">${projectData.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>` : ''}
+        </div>
+    `;
 
-    const descriptionElement = document.createElement('p');
+    const descriptionElement = document.createElement('div');
+    descriptionElement.classList.add('project-description');
     descriptionElement.innerHTML = projectData.description;
 
     const imageContainer = createImageContainer(projectData.images);
     const closeButton = createCloseButton(projectBlock);
 
-    // Aligning items in a column
-    projectBlock.appendChild(titleElement);
+    projectBlock.appendChild(headerElement);
     projectBlock.appendChild(closeButton);
-
     projectBlock.appendChild(descriptionElement);
     projectBlock.appendChild(imageContainer);
 
     document.body.appendChild(projectBlock);
+    
+    // Add keyboard support for closing with Escape key
+    const handleKeyPress = (event) => {
+        if (event.key === 'Escape') {
+            document.body.removeChild(projectBlock);
+            clearURL();
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+    };
+    projectBlock.keyHandler = handleKeyPress; // Store reference for cleanup
+    document.addEventListener('keydown', handleKeyPress);
 }
 
 
@@ -181,6 +226,9 @@ function createCloseButton(projectBlock) {
     closeButton.classList.add('close-button');
     closeButton.addEventListener('click', () => {
         document.body.removeChild(projectBlock);
+        clearURL();
+        // Remove any active keyboard listeners
+        document.removeEventListener('keydown', projectBlock.keyHandler);
     });
 
     return closeButton;
@@ -272,4 +320,51 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+// URL routing functions
+function updateURL(projectId) {
+    const newURL = `${window.location.origin}${window.location.pathname}#${projectId}`;
+    window.history.pushState({ projectId }, '', newURL);
+}
+
+function clearURL() {
+    const newURL = `${window.location.origin}${window.location.pathname}`;
+    window.history.pushState({}, '', newURL);
+}
+
+function getProjectIdFromURL() {
+    return window.location.hash.slice(1); // Remove the # symbol
+}
+
+function handleInitialRoute() {
+    const projectId = getProjectIdFromURL();
+    if (projectId) {
+        const project = projectsData.find(p => p.id === projectId);
+        if (project) {
+            showProjectBlock(project);
+        }
+    }
+}
+
+function handlePopState(event) {
+    const projectId = getProjectIdFromURL();
+    
+    // Close any open project blocks
+    const existingBlock = document.querySelector('.project-block');
+    if (existingBlock) {
+        // Clean up keyboard listener if it exists
+        if (existingBlock.keyHandler) {
+            document.removeEventListener('keydown', existingBlock.keyHandler);
+        }
+        document.body.removeChild(existingBlock);
+    }
+    
+    // Open project if ID is present in URL
+    if (projectId) {
+        const project = projectsData.find(p => p.id === projectId);
+        if (project) {
+            showProjectBlock(project);
+        }
+    }
 }

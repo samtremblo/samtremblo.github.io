@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Tremblay</title>
+    <script>
+        // GitHub Pages 404 redirect for client-side routing
+        // Store the current path and redirect to index.html
+        sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
+        window.location.replace('/');
+    </script>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 50px; font-family: monospace; color: #fff; background: #000; height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div>
+            <h1>Redirecting...</h1>
+            <p>You are being redirected to the main page.</p>
+        </div>
+    </div>
+</body>
+</html>
