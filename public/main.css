@@ -1490,22 +1490,14 @@ body.woodstock-mode .modal-image:hover {
     }
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 8px;
+/* Hide Main Page Scrollbars */
+body::-webkit-scrollbar {
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: var(--retro-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--retro-green);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--retro-text);
+body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
 /* Selection Styling */

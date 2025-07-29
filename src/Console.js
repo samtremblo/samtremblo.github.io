@@ -206,7 +206,7 @@ export class Console {
 
     activatePinkMode() {
         // Use local pink gif with tiling
-        document.body.style.backgroundImage = `url("./public/img/pink.gif")`;
+        document.body.style.backgroundImage = `url("./img/pink.gif")`;
         document.body.style.backgroundSize = 'auto';
         document.body.style.backgroundPosition = 'top left';
         document.body.style.backgroundRepeat = 'repeat';
@@ -232,7 +232,7 @@ export class Console {
 
     activateHeartMode() {
         // Use local hearts gif with tiling
-        document.body.style.backgroundImage = `url("./public/img/hearts.gif")`;
+        document.body.style.backgroundImage = `url("./img/hearts.gif")`;
         document.body.style.backgroundSize = 'auto';
         document.body.style.backgroundPosition = 'top left';
         document.body.style.backgroundRepeat = 'repeat';
