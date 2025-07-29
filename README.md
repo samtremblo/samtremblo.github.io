@@ -1,50 +1,29 @@
-# 🪄 Simple Three.js Portfolio 🪄
-## Tech Stack  
+# Portfolio
 
-- **Three.js** – for mind-blowing 3D visuals ✨  
-- **Vite** – for packaging that is fast af 🏃💨  
-- **GitHub Pages** – instant deployment and 🆓
-- **My smile** - makes you happy 😊
+Personal portfolio website built with vanilla JavaScript and terminal aesthetics.
 
----
+## Development
 
-## Development Mode  
-
-Start the local dev server with:  
+Start the local development server:
 
 ```sh
-npm i
-npm start  
+npm install
+npm start
 ```
 
-This will fire up **Vite** 
+## Build
 
----
-
-## Build for Production  
-
-Generate a production-ready build:  
+Create a production build:
 
 ```sh
-npm run build  
+npm run build
 ```
 
-vite outputs by default in the `dist/` folder.  
+## Deploy
 
----
-
-## Deploy to GitHub Pages  
-
-One command to **rule them all**:  
+Deploy to GitHub Pages:
 
 ```sh
-npm run deploy  
+npm run deploy
 ```
-
-This will:  
-✅ **Build the project**  
-✅ **Create a `CNAME` file** (for `stremblay.cc`)  
-✅ **Push to GitHub Pages automatically**  
-
----
 
