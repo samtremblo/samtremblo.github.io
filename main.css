@@ -481,9 +481,84 @@ body.woodstock-mode .blinking-cursor {
     }
 }
 
+/* Content Tabs */
+.content-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--retro-dark-green);
+}
+
+.tab-button {
+    background: var(--retro-secondary);
+    color: var(--retro-text);
+    border: 1px solid var(--retro-dark-green);
+    border-bottom: none;
+    padding: 10px 15px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.tab-button:first-child {
+    border-top-left-radius: 3px;
+}
+
+.tab-button:last-child {
+    border-top-right-radius: 3px;
+}
+
+.tab-button:hover {
+    background: var(--retro-bg);
+    color: var(--retro-green);
+}
+
+.tab-button.active {
+    background: var(--retro-bg);
+    color: var(--retro-green);
+    border-bottom: 1px solid var(--retro-bg);
+    margin-bottom: -1px;
+}
+
+.tab-content {
+    display: none;
+    padding: 30px 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Woodstock Mode Tabs */
+body.woodstock-mode .tab-button {
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
+    border: 2px solid var(--neon-purple);
+    color: #000;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+body.woodstock-mode .tab-button:hover {
+    background: linear-gradient(135deg, var(--neon-yellow), var(--neon-orange));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 107, 157, 0.4);
+}
+
+body.woodstock-mode .tab-button.active {
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    animation: tab-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tab-pulse {
+    0%, 100% { box-shadow: 0 0 5px var(--neon-pink); }
+    50% { box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-purple); }
+}
+
 /* Projects Section */
 .projects-section {
-    padding: 30px 0;
+    padding: 0;
 }
 
 .section-title {
@@ -757,6 +832,107 @@ body.woodstock-mode .project-card:hover {
 
 .project-card:hover .project-thumbnail {
     filter: brightness(1) contrast(1.1);
+}
+
+/* Books Section */
+.books-section {
+    padding: 0;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.book-card {
+    background: var(--retro-secondary);
+    border: 1px solid var(--retro-dark-green);
+    border-radius: 3px;
+    padding: 15px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.book-card:hover {
+    border-color: var(--retro-text);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.book-title {
+    color: var(--retro-text);
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 5px 0;
+}
+
+.book-author {
+    color: var(--retro-highlight);
+    font-size: 12px;
+    margin: 0 0 8px 0;
+    font-style: italic;
+}
+
+.book-category {
+    color: var(--retro-dim);
+    font-size: 10px;
+    margin: 0 0 10px 0;
+}
+
+.book-description {
+    color: var(--retro-accent);
+    font-size: 11px;
+    line-height: 1.4;
+    margin: 0 0 12px 0;
+}
+
+.book-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.book-tag {
+    color: var(--retro-text);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 9px;
+}
+
+/* Woodstock Mode Book Cards */
+body.woodstock-mode .book-card {
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan), var(--neon-purple));
+    background-size: 200% 200%;
+    border: 2px solid var(--retro-dark-green);
+    border-radius: 10px;
+    box-shadow: 
+        0 3px 10px rgba(255, 107, 157, 0.3),
+        0 0 15px rgba(78, 205, 196, 0.2);
+    animation: book-wobble 6s ease-in-out infinite, book-float 4s ease-in-out infinite;
+}
+
+body.woodstock-mode .book-card:nth-child(odd) {
+    animation-delay: 0.5s, 0.2s;
+}
+
+body.woodstock-mode .book-card:nth-child(even) {
+    animation-delay: 1s, 0.8s;
+}
+
+@keyframes book-wobble {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(0.5deg) scale(1.01); }
+    50% { transform: rotate(-0.3deg) scale(1); }
+    75% { transform: rotate(0.4deg) scale(1.01); }
+}
+
+@keyframes book-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
 }
 
 /* Contact Section */

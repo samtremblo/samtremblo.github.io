@@ -31,8 +31,8 @@
             }
         })();
     </script>
-  <script type="module" crossorigin src="/assets/index-Cj-903vt.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DYFfpPj0.css">
+  <script type="module" crossorigin src="/assets/index-Dh6AzhR1.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DqnyuttQ.css">
 </head>
 <body>
     <div class="crt-overlay"></div>
@@ -61,10 +61,21 @@
             </div>
         </section>
 
-        <section class="projects-section" id="projects">
-            <h2 class="section-title">$ ls projects/</h2>
+        <!-- Navigation Tabs -->
+        <nav class="content-tabs">
+            <button class="tab-button active" data-tab="projects">projects/</button>
+            <button class="tab-button" data-tab="books">books/recommendations/</button>
+        </nav>
+
+        <section class="projects-section tab-content active" id="projects">
             <div class="projects-grid" id="projects-container">
                 <!-- Projects will be loaded here -->
+            </div>
+        </section>
+
+        <section class="books-section tab-content" id="books">
+            <div class="books-grid" id="books-container">
+                <!-- Books will be loaded here -->
             </div>
         </section>
     </main>
