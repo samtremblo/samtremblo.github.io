@@ -1,0 +1,29 @@
+[
+  {
+    "id": "wip",
+    "title": "work in progress",
+    "author": "work in progress",
+    "description": "Personal book recommendations",
+    "category": "Book",
+    "year": 2025,
+    "tags": ["tech", "design", "book"]
+  },
+    {
+    "id": "wip",
+    "title": "work in progress",
+    "author": "work in progress",
+    "description": "Personal book recommendations",
+    "category": "Book",
+    "year": 2025,
+    "tags": ["tech", "design", "book"]
+  },
+    {
+    "id": "wip",
+    "title": "work in progress",
+    "author": "work in progress",
+    "description": "Personal book recommendations",
+    "category": "Book",
+    "year": 2025,
+    "tags": ["tech", "design", "book"]
+  }
+]
