@@ -4,7 +4,7 @@
     "title": "Coeur de loups",
     "description": "Coeur de loups is an immersive interactive light installation where participants howl into a microphone to trigger wolves howling back in the woods, accompanied by dynamic audio-reactive lighting that responds to the natural sounds of the forest.\n\nDeveloped for Atomic3 and 20k Productions as an Ottomata employee, this installation creates a magical dialogue between humans and nature through technology and light.\n\n**My contribution includes:**\n- **Interactive System Programming**\n- **Audio-Reactive Integration** \n- **Real-time Light Control Systems**",
     "images": ["img/loup1.webp", "img/loup2.webp", "img/loup3.webp"],
-    "year": 2020,
+    "year": 2021,
     "tags": ["interactive", "lighting", "audio-reactive"],
     "client": "Espace pour la Vie"
   },
