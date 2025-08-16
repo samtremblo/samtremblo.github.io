@@ -58,7 +58,7 @@
     "title": "Ados: cerveaux inventifs",
     "description": "Ados: cerveaux inventifs is a collection of interactive educational installations designed to engage children and teenagers in learning scientific concepts through hands-on technology experiences.\n\nDeveloped for Musée de l'ingéniosité J. Armand Bombardier in collaboration with Groupe DES, these installations make complex scientific principles accessible and fun through interactive technology.\n\n**My contribution includes:**\n- **Interactive Installation Programming**\n- **Educational Interface Development**\n- **Multi-Installation System Integration**",
     "images": ["img/ado1.webp", "img/ado2.webp", "img/ado3.webp", "img/ado4.webp", "img/ado5.webp"],
-    "year": 2022,
+    "year": 2023,
     "tags": ["educational", "interactive", "museum"],
     "client": "Musée de l'ingéniosité J. Armand Bombardier"
   },
@@ -67,7 +67,7 @@
     "title": "Liste chantée",
     "description": "Liste chantée is an innovative Christmas marketing campaign for Maxi that transforms ordinary grocery shopping into a musical experience, featuring a dynamic grocery list performed by a live chorus.\n\nDeveloped for LG2, this interactive web experience allows users to create personalized shopping lists that are then transformed into beautiful choral performances, combining e-commerce with entertainment.\n\n**My contribution includes:**\n- **Interactive Web Application Development**\n- **Real-time Audio Processing Integration**\n- **Dynamic Content Generation System**\n\n[Click here for more info](https://www.bonvisionnement.net/idea-2022/maxi-liste-depicerie-chantee)\n\n[Try it out for yourself!](https://d3n0oy8m0dpz95.cloudfront.net)",
     "images": ["img/thumbnail.webp", "img/index.webp", "img/ingredients.webp", "img/liste.webp"],
-    "year": 2021,
+    "year": 2022,
     "tags": ["web", "interactive", "marketing"],
     "client": "Maxi"
   },
@@ -85,7 +85,7 @@
     "title": "Insectarium: Œil Composé",
     "description": "Insectarium: Œil Composé is an interactive educational installation that provides visitors with a fascinating visual representation of how insects perceive the world through their compound eyes.\n\nDeveloped for Espace pour la Vie Museum, this installation uses advanced visual processing techniques to simulate insect vision, helping audiences understand the unique way these creatures experience their environment.\n\n**My contribution includes:**\n- **Visual Processing Algorithm Programming**\n- **Interactive Display System Development**\n- **Real-time Vision Simulation Technology**",
     "images": ["img/insect1.webp", "img/insect2.webp", "img/insect4.webp"],
-    "year": 2021,
+    "year": 2022,
     "tags": ["educational", "museum", "visualization"],
     "client": "Espace pour la Vie"
   },
