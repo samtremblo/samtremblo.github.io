@@ -1021,6 +1021,8 @@ body.woodstock-mode .book-card:nth-child(even) {
     flex-direction: column;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    transform: scale(0.9);
+    transform-origin: center;
 }
 
 .modal-header {
