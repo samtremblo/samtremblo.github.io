@@ -571,7 +571,7 @@ body.woodstock-mode .tab-button.active {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 150px;
 }
 
 .project-card {
@@ -837,6 +837,26 @@ body.woodstock-mode .project-card:hover {
 /* Books Section */
 .books-section {
     padding: 0;
+    position: relative;
+}
+
+/* Construction Overlay */
+.construction-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.construction-gif {
+    width: 80px;
+    height: auto;
+    margin-top: 30%;
 }
 
 .books-grid {

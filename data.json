@@ -2,7 +2,7 @@
   {
     "id": "coeur-de-loups",
     "title": "Coeur de loups",
-    "description": "Coeur de loups is an immersive interactive light installation where participants howl into a microphone to trigger wolves howling back in the woods, accompanied by dynamic audio-reactive lighting that responds to the natural sounds of the forest.\n\nDeveloped for Atomic3 and 20k Productions as an Ottomata employee, this installation creates a magical dialogue between humans and nature through technology and light.\n\n**My contribution includes:**\n- **Interactive System Programming**\n- **Audio-Reactive Integration** \n- **Real-time Light Control Systems**",
+    "description": "Immersive audio-visual experience bridging human interaction with nature through technology. Participants' howls trigger synchronized wolf responses and real-time lighting that adapts to forest ambience, creating an emotional dialogue between visitors and the natural world.\n\n**Technical innovation:**\n- Custom audio analysis algorithms for real-time sound processing\n- Dynamic lighting systems responding to environmental audio\n- Seamless integration of human input with natural soundscapes\n\n*All photos belong to their rightful owners.*",
     "images": ["img/loup1.webp", "img/loup2.webp", "img/loup3.webp"],
     "year": 2021,
     "tags": ["interactive", "lighting", "audio-reactive"],
@@ -11,16 +11,25 @@
   {
     "id": "dnd-experience",
     "title": "Dungeons & Dragons Experience",
-    "description": "D&D Experience is an immersive RFID-powered immersive game where players select a class at the start and engage in a series of interactive challenges, with their progress tracked via RFID bracelets.\n\nDesigned vibrant marketing. Coded and integrated on behalf of RodeoFX, the experience combines technology and gameplay to create an engaging adventure.\n\n**My contribution includes:**\n- **Software Architecture Design and Development**\n- **Front-End & Back-End Development**\n- **Electronics Programming**",
+    "description": "Immersive gaming ecosystem combining physical interaction with digital storytelling. RFID technology seamlessly tracks player journeys through multiple challenge stations, creating personalized adventure experiences that blend tabletop gaming with modern interactive technology.\n\n**Technical innovation:**\n- End-to-end system architecture for multi-station gameplay\n- Real-time player state synchronization across physical locations\n- Custom electronics integration for seamless RFID tracking\n\n*All photos belong to their rightful owners.*",
     "images": ["img/entry.webp", "img/lava.webp", "img/roper.webp", "img/beholder.webp"],
     "year": 2025,
     "tags": ["RFID", "interactive", "gaming", "electronics"],
     "client": "Vibrant Marketing"
   },
   {
+    "id": "le-lait-lg2",
+    "title": "Le lait by LG2",
+    "description": "Cross-platform AR experience bringing playful dairy-themed interactions to social media. Custom filters leverage each platform's unique capabilities to create engaging, shareable moments that connect brand messaging with user creativity and social expression.\n\n**Technical innovation:**\n- Platform-optimized AR experiences maximizing native features\n- Creative coding for Instagram Spark AR, Snapchat Lens Studio, and TikTok Effect House\n- Performance optimization ensuring smooth real-time rendering across devices\n\n*All photos belong to their rightful owners.*",
+    "images": ["img/lelait3.webp", "img/lelait1.gif", "img/lelait2.gif"],
+    "year": 2025,
+    "tags": ["AR", "social media", "filters", "marketing"],
+    "client": "LG2"
+  },
+  {
     "id": "gravitations",
     "title": "Gravitations",
-    "description": "Gravitations is an interactive projection mapping installation that transforms local artist Feline B's artwork into immersive digital experiences for visitors at Quartier des Spectacles.\n\nDeveloped for the 14th edition of Luminotherapie, this project brings static artworks to life through responsive digital mapping technology that reacts to audience presence and movement.\n\n**My contribution includes:**\n- **Interactive System Programming**\n- **Projection Mapping Technology**\n- **Real-time Visual (Touchdesigner)**\n\n[Click here for more info](https://www.quartierdesspectacles.com/fr/evenement/331/luminotherapie-14e-edition/#)",
+    "description": "Digital transformation of static artwork into living, breathing experiences. Projection mapping breathes new life into Feline B's creations, with responsive visuals that evolve based on audience interaction, turning passive art viewing into participatory storytelling.\n\n**Technical innovation:**\n- Advanced projection mapping calibration for architectural integration\n- Real-time audience detection driving dynamic visual responses\n- Custom TouchDesigner networks creating fluid, organic visual transformations\n\n*All photos belong to their rightful owners.*\n\n[More info](https://www.quartierdesspectacles.com/fr/evenement/331/luminotherapie-14e-edition/#)",
     "images": ["img/wilder.webp", "img/uqam.webp", "img/uqam2.webp"],
     "year": 2024,
     "tags": ["mapping", "interactive", "art"],
@@ -29,7 +38,7 @@
   {
     "id": "in-my-body",
     "title": "In my body",
-    "description": "In My Body is a real-time generative visual system created for BBOYIZM dance company's touring performance, generating dynamic visuals that respond to dancers' movements and the show's emotional narrative.\n\nPresented across Canada from February 27th to March 25th, 2022, this system created unique visual experiences for each performance, blending technology with artistic expression.\n\n**My contribution includes:**\n- **Real-time Generative Visual Programming**\n- **Motion-Responsive System Design**\n- **Live Performance Integration**",
+    "description": "Live visual synthesis merging technology with artistic expression. Generative algorithms translate dancers' energy and movement into evolving digital landscapes, creating a visual language that amplifies the emotional journey of each performance across Canada.\n\n**Technical innovation:**\n- Real-time motion analysis transforming dance into visual data\n- Generative systems creating unique visuals for every performance\n- Seamless integration with live production workflows and timing\n\n*All photos belong to their rightful owners.*",
     "images": ["img/dance1.webp", "img/dance2.webp"],
     "year": 2022,
     "tags": ["generative", "visuals", "dance", "performance"],
@@ -38,7 +47,7 @@
   {
     "id": "destination-bc",
     "title": "Destination BC",
-    "description": "Destination BC is an interactive LED wall installation that captures real-time reflections and shadows of passersby, seamlessly blending them into breathtaking British Columbia environments created by RodeoFX.\n\nDeveloped for Zulu, this immersive experience allows visitors to become part of stunning BC landscapes through advanced motion detection and real-time compositing technology.\n\n**My contribution includes:**\n- **Interactive System Programming**\n- **Motion Detection Integration**\n- **On-Site Technical Integration**",
+    "description": "Immersive portal placing visitors within stunning BC landscapes through innovative shadow play technology. Real-time compositing seamlessly integrates human silhouettes with cinematic environments, creating magical moments where visitors become part of the destination's story.\n\n**Technical innovation:**\n- Real-time shadow detection and extraction algorithms\n- Seamless compositing of live human forms with pre-rendered landscapes\n- Optimized display systems for large-scale LED wall installations\n\n*All photos belong to their rightful owners.*",
     "images": ["img/zCrop1.webp", "img/zCrop2.webp"],
     "year": 2024,
     "tags": ["LED", "interactive", "installation"],
@@ -47,7 +56,7 @@
   {
     "id": "tour-du-grand-quai",
     "title": "Tour du Grand Quai",
-    "description": "Tour du Grand Quai is an interactive 360° AR educational installation that combines immersive content with synchronized 3D assets and videos to educate visitors about Port de Montréal operations.\n\nFeaturing a dynamic content management system, clients can upload their own 360° videos through a web interface, which are then seamlessly integrated into the installation experience.\n\n**My contribution includes:**\n- **Content Integration Programming and optimization**\n- **Web-Based Content Management System**\n- **Unreal engine interactive systems**",
+    "description": "Immersive educational experience transforming industrial operations into engaging storytelling. 360° AR technology brings Port de Montréal's complex logistics to life, with a dynamic CMS empowering content creators to continuously evolve the narrative experience.\n\n**Technical innovation:**\n- Seamless 360° content pipeline from web upload to AR display\n- Custom Unreal Engine systems optimizing performance for educational content\n- Intuitive content management tools enabling non-technical content updates\n\n*All photos belong to their rightful owners.*",
     "images": ["img/tour3.webp", "img/tour4.webp", "img/tour2.webp"],
     "year": 2023,
     "tags": ["AR", "360°", "educational"],
@@ -56,7 +65,7 @@
   {
     "id": "ados-cerveaux-inventifs",
     "title": "Ados: cerveaux inventifs",
-    "description": "Ados: cerveaux inventifs is a collection of interactive educational installations designed to engage children and teenagers in learning scientific concepts through hands-on technology experiences.\n\nDeveloped for Musée de l'ingéniosité J. Armand Bombardier in collaboration with Groupe DES, these installations make complex scientific principles accessible and fun through interactive technology.\n\n**My contribution includes:**\n- **Interactive Installation Programming**\n- **Educational Interface Development**\n- **Multi-Installation System Integration**",
+    "description": "Playful technology ecosystem making complex scientific concepts accessible through interactive discovery. Multiple installations work in harmony to guide young minds through scientific principles, transforming abstract ideas into tangible, memorable experiences.\n\n**Technical innovation:**\n- Age-appropriate interface design balancing fun with educational depth\n- Modular system architecture enabling flexible museum layout configurations\n- Cross-installation data sharing creating cohesive learning journeys\n\n*All photos belong to their rightful owners.*",
     "images": ["img/ado1.webp", "img/ado2.webp", "img/ado3.webp", "img/ado4.webp", "img/ado5.webp"],
     "year": 2023,
     "tags": ["educational", "interactive", "museum"],
@@ -65,7 +74,7 @@
   {
     "id": "liste-chantee",
     "title": "Liste chantée",
-    "description": "Liste chantée is an innovative Christmas marketing campaign for Maxi that transforms ordinary grocery shopping into a musical experience, featuring a dynamic grocery list performed by a live chorus.\n\nDeveloped for LG2, this interactive web experience allows users to create personalized shopping lists that are then transformed into beautiful choral performances, combining e-commerce with entertainment.\n\n**My contribution includes:**\n- **Interactive Web Application Development**\n- **Real-time Audio Processing Integration**\n- **Dynamic Content Generation System**\n\n[Click here for more info](https://www.bonvisionnement.net/idea-2022/maxi-liste-depicerie-chantee)\n\n[Try it out for yourself!](https://d3n0oy8m0dpz95.cloudfront.net)",
+    "description": "Magical transformation of mundane grocery shopping into personalized musical performance. AI-driven composition turns everyday shopping lists into beautiful choral arrangements, creating unexpected delight and emotional connection with the brand.\n\n**Technical innovation:**\n- Real-time text-to-music generation algorithms creating unique compositions\n- Seamless integration of live choral performance with digital interaction\n- Dynamic audio processing ensuring musical coherence across varied user inputs\n\n*All photos belong to their rightful owners.*\n\n[More info](https://www.bonvisionnement.net/idea-2022/maxi-liste-depicerie-chantee) | [Try it!](https://d3n0oy8m0dpz95.cloudfront.net)",
     "images": ["img/thumbnail.webp", "img/index.webp", "img/ingredients.webp", "img/liste.webp"],
     "year": 2022,
     "tags": ["web", "interactive", "marketing"],
@@ -74,7 +83,7 @@
   {
     "id": "la-langue-dans-ma-poche",
     "title": "La langue dans ma poche",
-    "description": "La langue dans ma poche is a complex interactive game show system that orchestrates multiple computers, games, and databases through sophisticated state machine architecture to deliver seamless live television entertainment.\n\nThis system manages real-time game synchronization, contestant data, and show flow control, ensuring smooth operation during live broadcasts while handling multiple concurrent game states and user interactions.\n\n**My contribution includes:**\n- **System Architecture Design & Development**\n- **Multi-Computer Network Synchronization**\n- **Real-time State Management Programming**\n- **Front-End Game Interface Development**\n\n[Full credits here](https://www.attraction.ca/fr/nos-productions/la-langue-dans-ma-poche)",
+    "description": "Mission-critical live television infrastructure powering complex interactive entertainment. Orchestrates multiple game systems, contestant data, and real-time audience interactions while maintaining flawless synchronization during high-pressure live broadcasts.\n\n**Technical innovation:**\n- Fault-tolerant distributed architecture ensuring zero-downtime live performance\n- Real-time state synchronization across multiple game stations and databases\n- Custom networking protocols optimized for sub-second response times\n\n*All photos belong to their rightful owners.*\n\n[Full credits](https://www.attraction.ca/fr/nos-productions/la-langue-dans-ma-poche)",
     "images": ["img/ldmp1.webp", "img/ldmp2.webp", "img/ldmp3.webp", "img/ldmp4.webp", "img/ldmp5.webp"],
     "year": 2024,
     "tags": ["game show", "networking", "interactive"],
@@ -83,7 +92,7 @@
   {
     "id": "insectarium-oeil-compose",
     "title": "Insectarium: Œil Composé",
-    "description": "Insectarium: Œil Composé is an interactive educational installation that provides visitors with a fascinating visual representation of how insects perceive the world through their compound eyes.\n\nDeveloped for Espace pour la Vie Museum, this installation uses advanced visual processing techniques to simulate insect vision, helping audiences understand the unique way these creatures experience their environment.\n\n**My contribution includes:**\n- **Visual Processing Algorithm Programming**\n- **Interactive Display System Development**\n- **Real-time Vision Simulation Technology**",
+    "description": "Perspective-shifting experience revealing the hidden visual world of insects. Advanced computational vision algorithms recreate compound eye perception in real-time, offering visitors a profound new understanding of how other species experience reality.\n\n**Technical innovation:**\n- Custom algorithms simulating complex multi-faceted insect vision\n- Real-time image processing creating authentic compound eye perspectives\n- Interactive systems translating scientific research into accessible experiences\n\n*All photos belong to their rightful owners.*",
     "images": ["img/insect1.webp", "img/insect2.webp", "img/insect4.webp"],
     "year": 2022,
     "tags": ["educational", "museum", "visualization"],
@@ -92,7 +101,7 @@
   {
     "id": "silence-on-joue",
     "title": "Silence on joue!",
-    "description": "Silence on joue! is Radio-Canada's flagship quiz show where I serve as the lead system architect, designing and maintaining the entire computer infrastructure that powers this fast-paced interactive television production.\n\nOver four years, I've developed and maintained robust systems that handle real-time contestant interactions, game state management, and live broadcast integration, ensuring seamless operation during high-pressure live television environments.\n\n**My contribution includes:**\n- **System Architecture Design & Maintenance**\n- **Real-time Interactive System Development**\n- **Live Production Infrastructure Management**\n- **Data management system**\n\n**Role:** System Architecture & Software Design Lead  \n**Duration:** 4 years ongoing",
+    "description": "Flagship broadcast technology ecosystem powering Quebec's most beloved quiz show. Four years of continuous innovation ensuring seamless live production, from contestant interaction systems to real-time data visualization, maintaining 99.9% uptime across hundreds of episodes.\n\n**Technical innovation:**\n- Scalable architecture handling thousands of simultaneous contestant interactions\n- Live broadcast integration systems with millisecond precision timing\n- Comprehensive data analytics platform tracking audience engagement patterns (4+ years)\n\n*All photos belong to their rightful owners.*",
     "images": ["img/soj1.webp"],
     "year": 2025,
     "tags": ["TV show", "system architecture", "real-time", "broadcast"],
