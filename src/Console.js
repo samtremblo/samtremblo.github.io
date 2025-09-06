@@ -86,7 +86,7 @@ export class Console {
 
     processCommand(command) {
         if (command === 'whoami') {
-            this.addCommandToHistory('Fullstack Interactive Developer & Creative Technologist', 'response');
+            this.addCommandToHistory('Fullstack Interactive Developer, Technical Director & Creative Technologist', 'response');
         } else if (command === 'woodstock') {
             this.addCommandToHistory('mode activated', 'response');
             this.activateTemporaryWoodstock();
