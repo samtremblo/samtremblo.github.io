@@ -2,6 +2,7 @@
   {
     "id": "the-callisto-protocol",
     "title": "The Callisto Protocol",
+    "role": "Full-stack Interactive Development",
     "description": "Real-time character animation and performance capture systems for AAA horror gaming experience. Advanced body tracking technologies and Unreal Engine integration delivering seamless motion capture translation into visceral, atmospheric gameplay that responds dynamically to player interactions.\n\n**Technical innovation:**\n- Real-time motion capture processing optimized for Unreal Engine pipelines\n- Advanced body tracking systems enabling fluid character performance\n- Custom animation workflows bridging performance capture with interactive gameplay\n\n*All photos belong to their rightful owners.*",
     "images": ["img/callisto1.webp", "img/callisto2.webp", "img/callisto3.webp"],
     "year": 2022,
@@ -11,7 +12,8 @@
   {
     "id": "coeur-de-loups",
     "title": "Coeur de loups",
-    "description": "Immersive audio-visual experience bridging human interaction with nature through technology. Participants' howls trigger synchronized wolf responses and real-time lighting that adapts to forest ambience, creating an emotional dialogue between visitors and the natural world.\n\n**Technical innovation:**\n- Custom audio analysis algorithms for real-time sound processing\n- Dynamic lighting systems responding to environmental audio\n- Seamless integration of human input with natural soundscapes\n\n*All photos belong to their rightful owners.*",
+    "role": "Full-stack Interactive Development",
+    "description": "Immersive audio-visual experience bridging human interaction with nature through technology. Participants' howls trigger synchronized wolf responses and real-time lighting that adapts to forest ambience, creating an emotional dialogue between visitors and the natural world.\n\n**Technical innovation:**\n- DMX integration with sound interaction and interactivity\n- Dynamic lighting systems responding to environmental audio\n- Seamless integration of human input with natural soundscapes\n\n*All photos belong to their rightful owners.*",
     "images": ["img/loup1.webp", "img/loup2.webp", "img/loup3.webp"],
     "year": 2021,
     "tags": ["interactive", "lighting", "audio-reactive"],
@@ -20,7 +22,8 @@
   {
     "id": "dnd-experience",
     "title": "Dungeons & Dragons Experience",
-    "description": "Immersive gaming ecosystem combining physical interaction with digital storytelling. RFID technology seamlessly tracks player journeys through multiple challenge stations, creating personalized adventure experiences that blend tabletop gaming with modern interactive technology.\n\n**Technical innovation:**\n- End-to-end system architecture for multi-station gameplay\n- Real-time player state synchronization across physical locations\n- Custom electronics integration for seamless RFID tracking\n\n*All photos belong to their rightful owners.*",
+    "role": "Lead Developer and Creative Technologist",
+    "description": "Complex multi-user gaming ecosystem bridging physical and digital realms through sophisticated sensor networks. Custom game programming orchestrates seamless integration between RFID sensors, environmental triggers, and real-time state management, enabling dozens of simultaneous players to experience personalized adventures across interconnected challenge stations.\n\n**Technical innovation:**\n- Advanced game programming with distributed state synchronization across multiple locations\n- Real-time multi-user tracking and session management for concurrent gameplay\n- Seamless sensor integration creating responsive physical-digital interactions\n\n*All photos belong to their rightful owners.*",
     "images": ["img/entry.webp", "img/lava.webp", "img/roper.webp", "img/beholder.webp"],
     "year": 2025,
     "tags": ["RFID", "interactive", "gaming", "electronics"],
@@ -29,6 +32,7 @@
   {
     "id": "le-lait-lg2",
     "title": "Le lait by LG2",
+    "role": "Technological Direction and Lead Developer",
     "description": "Cross-platform AR experience bringing playful dairy-themed interactions to social media. Custom filters leverage each platform's unique capabilities to create engaging, shareable moments that connect brand messaging with user creativity and social expression.\n\n**Technical innovation:**\n- Platform-optimized AR experiences maximizing native features\n- Creative coding for Instagram Spark AR, Snapchat Lens Studio, and TikTok Effect House\n- Performance optimization ensuring smooth real-time rendering across devices\n\n*All photos belong to their rightful owners.*",
     "images": ["img/lelait3.webp", "img/lelait1.gif", "img/lelait2.gif"],
     "year": 2024,
@@ -38,7 +42,8 @@
   {
     "id": "gravitations",
     "title": "Gravitations",
-    "description": "Digital transformation of static artwork into living, breathing experiences. Projection mapping breathes new life into Feline B's creations, with responsive visuals that evolve based on audience interaction, turning passive art viewing into participatory storytelling.\n\n**Technical innovation:**\n- Advanced projection mapping calibration for architectural integration\n- Real-time audience detection driving dynamic visual responses\n- Custom TouchDesigner networks creating fluid, organic visual transformations\n\n*All photos belong to their rightful owners.*\n\n[More info](https://www.quartierdesspectacles.com/fr/evenement/331/luminotherapie-14e-edition/#)",
+    "role": "Full-stack Interactive Development",
+    "description": "Digital transformation of static artwork into living, breathing experiences. Projection mapping breathes new life into Feline B's creations, with responsive visuals that evolve based on audience interaction, turning passive art viewing into participatory storytelling.\n\n**Technical innovation:**\n- Advanced projection mapping for architectural integration\n- Real-time weather data integration driving dynamic visual responses\n- Custom TouchDesigner networks creating fluid, organic visual transformations\n\n*All photos belong to their rightful owners.*\n\n[More info](https://www.quartierdesspectacles.com/fr/evenement/331/luminotherapie-14e-edition/#)",
     "images": ["img/wilder.webp", "img/uqam.webp", "img/uqam2.webp"],
     "year": 2024,
     "tags": ["mapping", "interactive", "art"],
@@ -47,6 +52,7 @@
   {
     "id": "in-my-body",
     "title": "In my body",
+    "role": "Technological Direction and Development",
     "description": "Live visual synthesis merging technology with artistic expression. Generative algorithms translate dancers' energy and movement into evolving digital landscapes, creating a visual language that amplifies the emotional journey of each performance across Canada.\n\n**Technical innovation:**\n- Real-time motion analysis transforming dance into visual data\n- Generative systems creating unique visuals for every performance\n- Seamless integration with live production workflows and timing\n\n*All photos belong to their rightful owners.*",
     "images": ["img/dance1.webp", "img/dance2.webp"],
     "year": 2022,
@@ -56,6 +62,7 @@
   {
     "id": "destination-bc",
     "title": "Destination BC",
+    "role": "Software and Hardware Integration",
     "description": "Immersive portal placing visitors within stunning BC landscapes through innovative shadow play technology. Real-time compositing seamlessly integrates human silhouettes with cinematic environments, creating magical moments where visitors become part of the destination's story.\n\n**Technical innovation:**\n- Real-time shadow detection and extraction algorithms\n- Seamless compositing of live human forms with pre-rendered landscapes\n- Optimized display systems for large-scale LED wall installations\n\n*All photos belong to their rightful owners.*",
     "images": ["img/zCrop1.webp", "img/zCrop2.webp"],
     "year": 2024,
@@ -65,6 +72,7 @@
   {
     "id": "tour-du-grand-quai",
     "title": "Tour du Grand Quai",
+    "role": "Full-stack Interactive Development",
     "description": "Immersive educational experience transforming industrial operations into engaging storytelling. 360° AR technology brings Port de Montréal's complex logistics to life, with a dynamic CMS empowering content creators to continuously evolve the narrative experience.\n\n**Technical innovation:**\n- Seamless 360° content pipeline from web upload to AR display\n- Custom Unreal Engine systems optimizing performance for educational content\n- Intuitive content management tools enabling non-technical content updates\n\n*All photos belong to their rightful owners.*",
     "images": ["img/tour3.webp", "img/tour4.webp", "img/tour2.webp"],
     "year": 2023,
@@ -74,7 +82,8 @@
   {
     "id": "ados-cerveaux-inventifs",
     "title": "Ados: cerveaux inventifs",
-    "description": "Playful technology ecosystem making complex scientific concepts accessible through interactive discovery. Multiple installations work in harmony to guide young minds through scientific principles, transforming abstract ideas into tangible, memorable experiences.\n\n**Technical innovation:**\n- Age-appropriate interface design balancing fun with educational depth\n- Modular system architecture enabling flexible museum layout configurations\n- Cross-installation data sharing creating cohesive learning journeys\n\n*All photos belong to their rightful owners.*",
+    "role": "Full-stack Interactive Development",
+    "description": "Interactive educational ecosystem featuring multiple games that seamlessly blend physical interaction, custom electronics, and immersive learning experiences. Engaging installations transform complex scientific concepts into accessible, hands-on discoveries for young minds.\n\n**Technical innovation:**\n- Custom electronics integration for tactile educational experiences\n- Multi-station game design encouraging exploration and discovery\n- Physical-digital interaction systems enhancing learning engagement\n\n*All photos belong to their rightful owners.*",
     "images": ["img/ado1.webp", "img/ado2.webp", "img/ado3.webp", "img/ado4.webp", "img/ado5.webp"],
     "year": 2023,
     "tags": ["educational", "interactive", "museum"],
@@ -83,7 +92,8 @@
   {
     "id": "liste-chantee",
     "title": "Liste chantée",
-    "description": "Magical transformation of mundane grocery shopping into personalized musical performance. AI-driven composition turns everyday shopping lists into beautiful choral arrangements, creating unexpected delight and emotional connection with the brand.\n\n**Technical innovation:**\n- Real-time text-to-music generation algorithms creating unique compositions\n- Seamless integration of live choral performance with digital interaction\n- Dynamic audio processing ensuring musical coherence across varied user inputs\n\n*All photos belong to their rightful owners.*\n\n[More info](https://www.bonvisionnement.net/idea-2022/maxi-liste-depicerie-chantee) | [Try it!](https://d3n0oy8m0dpz95.cloudfront.net)",
+    "role": "Full-stack Interactive Development",
+    "description": "Magical transformation of mundane grocery shopping into personalized musical performance. AI-driven composition turns everyday shopping lists into beautiful choral arrangements, creating unexpected delight and emotional connection with the brand.\n\n**Technical innovation:**\n- Composition algorithms creating unique arrangements\n- Dynamic sample selection algorithms to maintain musical timing and beat\n- Dynamic audio processing ensuring musical coherence across varied user inputs\n\n*All photos belong to their rightful owners.*\n\n[More info](https://www.bonvisionnement.net/idea-2022/maxi-liste-depicerie-chantee) | [Try it!](https://d3n0oy8m0dpz95.cloudfront.net)",
     "images": ["img/thumbnail.webp", "img/index.webp", "img/ingredients.webp", "img/liste.webp"],
     "year": 2022,
     "tags": ["web", "interactive", "marketing"],
@@ -92,7 +102,8 @@
   {
     "id": "la-langue-dans-ma-poche",
     "title": "La langue dans ma poche",
-    "description": "Mission-critical live television infrastructure powering complex interactive entertainment. Orchestrates multiple game systems, contestant data, and real-time audience interactions while maintaining flawless synchronization during high-pressure live broadcasts.\n\n**Technical innovation:**\n- Fault-tolerant distributed architecture ensuring zero-downtime live performance\n- Real-time state synchronization across multiple game stations and databases\n- Custom networking protocols optimized for sub-second response times\n\n*All photos belong to their rightful owners.*\n\n[Full credits](https://www.attraction.ca/fr/nos-productions/la-langue-dans-ma-poche)",
+    "role": "Technological Direction and Development",
+    "description": "Mission-critical live television infrastructure powering complex interactive entertainment. Orchestrates video wall displays, contestant interfaces, and real-time audience interactions while maintaining flawless synchronization during high-pressure live broadcasts.\n\n**Technical innovation:**\n- Fault-tolerant distributed architecture ensuring zero-downtime live performance\n- Real-time state synchronization across video wall and contestant interfaces\n- Real-time optimized network protocols for sub-second response times\n\n*All photos belong to their rightful owners.*\n\n[Full credits](https://www.attraction.ca/fr/nos-productions/la-langue-dans-ma-poche)",
     "images": ["img/ldmp1.webp", "img/ldmp2.webp", "img/ldmp3.webp", "img/ldmp4.webp", "img/ldmp5.webp"],
     "year": 2024,
     "tags": ["game show", "networking", "interactive"],
@@ -101,6 +112,7 @@
   {
     "id": "insectarium-oeil-compose",
     "title": "Insectarium: Œil Composé",
+    "role": "Full-stack Interactive Development",
     "description": "Perspective-shifting experience revealing the hidden visual world of insects. Advanced computational vision algorithms recreate compound eye perception in real-time, offering visitors a profound new understanding of how other species experience reality.\n\n**Technical innovation:**\n- Custom algorithms simulating complex multi-faceted insect vision\n- Real-time image processing creating authentic compound eye perspectives\n- Interactive systems translating scientific research into accessible experiences\n\n*All photos belong to their rightful owners.*",
     "images": ["img/insect1.webp", "img/insect2.webp", "img/insect4.webp"],
     "year": 2022,
@@ -110,7 +122,8 @@
   {
     "id": "silence-on-joue",
     "title": "Silence on joue!",
-    "description": "Flagship broadcast technology ecosystem powering Quebec's most beloved quiz show. Four years of continuous innovation ensuring seamless live production, from contestant interaction systems to real-time data visualization, maintaining 99.9% uptime across hundreds of episodes.\n\n**Technical innovation:**\n- Scalable architecture handling thousands of simultaneous contestant interactions\n- Live broadcast integration systems with millisecond precision timing\n- Comprehensive data analytics platform tracking audience engagement patterns (4+ years)\n\n*All photos belong to their rightful owners.*",
+    "role": "Technological Direction",
+    "description": "Flagship broadcast technology ecosystem powering Quebec's most beloved quiz show. Four years of continuous innovation ensuring seamless live production, from contestant interaction systems to real-time data visualization, maintaining 99.9% uptime across hundreds of episodes.\n\n**Technical innovation:**\n- Scalable architecture handling multiple simultaneous contestant interactions\n- Live broadcast integration systems with millisecond precision timing\n- Real-time system monitoring and performance optimization (4+ years)\n\n*All photos belong to their rightful owners.*",
     "images": ["img/soj1.webp"],
     "year": 2025,
     "tags": ["TV show", "system architecture", "real-time", "broadcast"],

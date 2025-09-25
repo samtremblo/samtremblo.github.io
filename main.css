@@ -806,7 +806,7 @@ body.woodstock-mode .project-card:hover {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.project-client {
+.project-role {
     color: var(--retro-dim);
     font-size: 10px;
     margin-bottom: 6px;
@@ -1109,7 +1109,7 @@ body.woodstock-mode .book-card:nth-child(even) {
 }
 
 .modal-project-year,
-.modal-project-client {
+.modal-project-role {
     color: var(--retro-text);
     background: var(--retro-secondary);
     padding: 4px 8px;
@@ -1253,7 +1253,7 @@ body.woodstock-mode .modal-header {
 
 
 body.woodstock-mode .modal-project-year,
-body.woodstock-mode .modal-project-client {
+body.woodstock-mode .modal-project-role {
     background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
     border-color: var(--neon-yellow);
     color: var(--retro-bg);
