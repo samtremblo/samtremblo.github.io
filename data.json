@@ -1,5 +1,14 @@
 [
   {
+    "id": "the-callisto-protocol",
+    "title": "The Callisto Protocol",
+    "description": "Real-time character animation and performance capture systems for AAA horror gaming experience. Advanced body tracking technologies and Unreal Engine integration delivering seamless motion capture translation into visceral, atmospheric gameplay that responds dynamically to player interactions.\n\n**Technical innovation:**\n- Real-time motion capture processing optimized for Unreal Engine pipelines\n- Advanced body tracking systems enabling fluid character performance\n- Custom animation workflows bridging performance capture with interactive gameplay\n\n*All photos belong to their rightful owners.*",
+    "images": ["img/callisto1.webp", "img/callisto2.webp", "img/callisto3.webp"],
+    "year": 2022,
+    "tags": ["Unreal Engine", "motion capture", "real-time", "body tracking"],
+    "client": "Striking Distance Studios"
+  },
+  {
     "id": "coeur-de-loups",
     "title": "Coeur de loups",
     "description": "Immersive audio-visual experience bridging human interaction with nature through technology. Participants' howls trigger synchronized wolf responses and real-time lighting that adapts to forest ambience, creating an emotional dialogue between visitors and the natural world.\n\n**Technical innovation:**\n- Custom audio analysis algorithms for real-time sound processing\n- Dynamic lighting systems responding to environmental audio\n- Seamless integration of human input with natural soundscapes\n\n*All photos belong to their rightful owners.*",
