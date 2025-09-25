@@ -22,7 +22,7 @@
   {
     "id": "dnd-experience",
     "title": "Dungeons & Dragons Experience",
-    "role": "Lead Developer and Creative Technologist",
+    "role": "Lead Development and Creative Technologist",
     "description": "Complex multi-user gaming ecosystem bridging physical and digital realms through sophisticated sensor networks. Custom game programming orchestrates seamless integration between RFID sensors, environmental triggers, and real-time state management, enabling dozens of simultaneous players to experience personalized adventures across interconnected challenge stations.\n\n**Technical innovation:**\n- Advanced game programming with distributed state synchronization across multiple locations\n- Real-time multi-user tracking and session management for concurrent gameplay\n- Seamless sensor integration creating responsive physical-digital interactions\n\n*All photos belong to their rightful owners.*",
     "images": ["img/entry.webp", "img/lava.webp", "img/roper.webp", "img/beholder.webp"],
     "year": 2025,
@@ -42,7 +42,7 @@
   {
     "id": "gravitations",
     "title": "Gravitations",
-    "role": "Full-stack Interactive Development",
+    "role": "Lead Development and Creative Technologist",
     "description": "Digital transformation of static artwork into living, breathing experiences. Projection mapping breathes new life into Feline B's creations, with responsive visuals that evolve based on audience interaction, turning passive art viewing into participatory storytelling.\n\n**Technical innovation:**\n- Advanced projection mapping for architectural integration\n- Real-time weather data integration driving dynamic visual responses\n- Custom TouchDesigner networks creating fluid, organic visual transformations\n\n*All photos belong to their rightful owners.*\n\n[More info](https://www.quartierdesspectacles.com/fr/evenement/331/luminotherapie-14e-edition/#)",
     "images": ["img/wilder.webp", "img/uqam.webp", "img/uqam2.webp"],
     "year": 2024,
@@ -52,7 +52,7 @@
   {
     "id": "in-my-body",
     "title": "In my body",
-    "role": "Technological Direction and Development",
+    "role": "Lead Development and Creative Technologist",
     "description": "Live visual synthesis merging technology with artistic expression. Generative algorithms translate dancers' energy and movement into evolving digital landscapes, creating a visual language that amplifies the emotional journey of each performance across Canada.\n\n**Technical innovation:**\n- Real-time motion analysis transforming dance into visual data\n- Generative systems creating unique visuals for every performance\n- Seamless integration with live production workflows and timing\n\n*All photos belong to their rightful owners.*",
     "images": ["img/dance1.webp", "img/dance2.webp"],
     "year": 2022,
@@ -62,7 +62,7 @@
   {
     "id": "destination-bc",
     "title": "Destination BC",
-    "role": "Software and Hardware Integration",
+    "role": "Hardware and Software Integration",
     "description": "Immersive portal placing visitors within stunning BC landscapes through innovative shadow play technology. Real-time compositing seamlessly integrates human silhouettes with cinematic environments, creating magical moments where visitors become part of the destination's story.\n\n**Technical innovation:**\n- Real-time shadow detection and extraction algorithms\n- Seamless compositing of live human forms with pre-rendered landscapes\n- Optimized display systems for large-scale LED wall installations\n\n*All photos belong to their rightful owners.*",
     "images": ["img/zCrop1.webp", "img/zCrop2.webp"],
     "year": 2024,
@@ -102,7 +102,7 @@
   {
     "id": "la-langue-dans-ma-poche",
     "title": "La langue dans ma poche",
-    "role": "Technological Direction and Development",
+    "role": "Creative Technologist and Development",
     "description": "Mission-critical live television infrastructure powering complex interactive entertainment. Orchestrates video wall displays, contestant interfaces, and real-time audience interactions while maintaining flawless synchronization during high-pressure live broadcasts.\n\n**Technical innovation:**\n- Fault-tolerant distributed architecture ensuring zero-downtime live performance\n- Real-time state synchronization across video wall and contestant interfaces\n- Real-time optimized network protocols for sub-second response times\n\n*All photos belong to their rightful owners.*\n\n[Full credits](https://www.attraction.ca/fr/nos-productions/la-langue-dans-ma-poche)",
     "images": ["img/ldmp1.webp", "img/ldmp2.webp", "img/ldmp3.webp", "img/ldmp4.webp", "img/ldmp5.webp"],
     "year": 2024,
@@ -122,7 +122,7 @@
   {
     "id": "silence-on-joue",
     "title": "Silence on joue!",
-    "role": "Technological Direction",
+    "role": "Lead Development and Creative Technologist",
     "description": "Flagship broadcast technology ecosystem powering Quebec's most beloved quiz show. Four years of continuous innovation ensuring seamless live production, from contestant interaction systems to real-time data visualization, maintaining 99.9% uptime across hundreds of episodes.\n\n**Technical innovation:**\n- Scalable architecture handling multiple simultaneous contestant interactions\n- Live broadcast integration systems with millisecond precision timing\n- Real-time system monitoring and performance optimization (4+ years)\n\n*All photos belong to their rightful owners.*",
     "images": ["img/soj1.webp"],
     "year": 2025,
