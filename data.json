@@ -31,7 +31,7 @@
     "title": "Le lait by LG2",
     "description": "Cross-platform AR experience bringing playful dairy-themed interactions to social media. Custom filters leverage each platform's unique capabilities to create engaging, shareable moments that connect brand messaging with user creativity and social expression.\n\n**Technical innovation:**\n- Platform-optimized AR experiences maximizing native features\n- Creative coding for Instagram Spark AR, Snapchat Lens Studio, and TikTok Effect House\n- Performance optimization ensuring smooth real-time rendering across devices\n\n*All photos belong to their rightful owners.*",
     "images": ["img/lelait3.webp", "img/lelait1.gif", "img/lelait2.gif"],
-    "year": 2025,
+    "year": 2024,
     "tags": ["AR", "social media", "filters", "marketing"],
     "client": "LG2"
   },
@@ -96,7 +96,7 @@
     "images": ["img/ldmp1.webp", "img/ldmp2.webp", "img/ldmp3.webp", "img/ldmp4.webp", "img/ldmp5.webp"],
     "year": 2024,
     "tags": ["game show", "networking", "interactive"],
-    "client": "Attraction"
+    "client": "Attraction Media"
   },
   {
     "id": "insectarium-oeil-compose",
