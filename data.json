@@ -1,5 +1,15 @@
 [
   {
+    "id": "dans-le-fleuve",
+    "title": "Dans le fleuve",
+    "role": "Creative Technologist and Developer",
+    "description": "Immersive multisensory installation about the St. Lawrence River in Montreal's underground corridor. Real-time Unreal Engine previsualization enabled rapid client approval cycles and seamless integration preparation for this environmental storytelling experience combining video, audio, and interactive elements.\n\n**Technical innovation:**\n- Real-time Unreal Engine previsualization for complex underground installation design\n- At-scale visualization systems enabling precise spatial planning and client approval\n- Integration-ready pipeline bridging previsualization with final installation deployment\n- Advanced environmental simulation for underground corridor lighting\n\n*All photos belong to their rightful owners.*",
+    "images": ["img/fleuve1.webp", "img/fleuve2.webp", "img/fleuve3.webp"],
+    "year": 2023,
+    "tags": ["Unreal Engine", "previsualization", "integration", "installation", "environmental"],
+    "client": "Jobel / RodeoFX"
+  },
+  {
     "id": "the-callisto-protocol",
     "title": "The Callisto Protocol",
     "role": "Full-stack Interactive Developer",

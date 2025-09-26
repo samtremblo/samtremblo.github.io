@@ -366,6 +366,112 @@ body.woodstock-mode .ascii-art {
     60% { transform: translateY(-3px); }
 }
 
+/* Skills line in console */
+.skills-line {
+    color: var(--retro-dim);
+    opacity: 0.8;
+    font-size: 11px;
+    margin-top: 5px;
+    margin-left: 16px;
+    text-align: left;
+}
+
+
+@keyframes orbital-float {
+    0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+    25% { transform: translate(3px, -2px) rotate(1deg); }
+    50% { transform: translate(-2px, -4px) rotate(-0.5deg); }
+    75% { transform: translate(-3px, 1px) rotate(0.8deg); }
+}
+
+@keyframes orbital-float-alt {
+    0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+    25% { transform: translate(-2px, 2px) rotate(-0.5deg); }
+    50% { transform: translate(4px, -1px) rotate(1.2deg); }
+    75% { transform: translate(2px, -3px) rotate(-0.8deg); }
+}
+
+@keyframes orbital-float-alt2 {
+    0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+    25% { transform: translate(1px, -3px) rotate(0.3deg); }
+    50% { transform: translate(-3px, 2px) rotate(-1deg); }
+    75% { transform: translate(2px, 3px) rotate(0.6deg); }
+}
+
+/* Individual floating patterns for left and right skills */
+.skills-left .skill-tag:nth-child(1) {
+    animation: orbital-float 4.2s ease-in-out infinite;
+    animation-delay: 0s;
+}
+.skills-left .skill-tag:nth-child(2) {
+    animation: orbital-float-alt 3.8s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.skills-right .skill-tag:nth-child(1) {
+    animation: orbital-float-alt2 4.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+.skills-right .skill-tag:nth-child(2) {
+    animation: orbital-float 3.6s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+.skills-right .skill-tag:nth-child(3) {
+    animation: orbital-float-alt 4.1s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+/* Woodstock mode styling for skill tags */
+body.woodstock-mode .skill-tag {
+    color: var(--neon-cyan);
+}
+
+body.woodstock-mode .skills-left .skill-tag:nth-child(1) {
+    animation: orbital-float 4.2s ease-in-out infinite, neon-glow 2s ease-in-out infinite alternate;
+    animation-delay: 0s, 0s;
+}
+body.woodstock-mode .skills-left .skill-tag:nth-child(2) {
+    animation: orbital-float-alt 3.8s ease-in-out infinite, neon-glow 2.5s ease-in-out infinite alternate;
+    animation-delay: 1s, 0.3s;
+}
+
+body.woodstock-mode .skills-right .skill-tag:nth-child(1) {
+    animation: orbital-float-alt2 4.5s ease-in-out infinite, neon-glow 2.2s ease-in-out infinite alternate;
+    animation-delay: 0.5s, 0.8s;
+}
+body.woodstock-mode .skills-right .skill-tag:nth-child(2) {
+    animation: orbital-float 3.6s ease-in-out infinite, neon-glow 2.8s ease-in-out infinite alternate;
+    animation-delay: 1.5s, 1.2s;
+}
+body.woodstock-mode .skills-right .skill-tag:nth-child(3) {
+    animation: orbital-float-alt 4.1s ease-in-out infinite, neon-glow 2.1s ease-in-out infinite alternate;
+    animation-delay: 2s, 1.7s;
+}
+
+body.woodstock-mode .skill-tag:hover {
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+    background: var(--retro-bg);
+    box-shadow: 0 0 10px var(--neon-pink);
+}
+
+body.woodstock-mode .skill-tag.active {
+    border-color: var(--neon-yellow);
+    color: var(--retro-bg);
+    background: var(--neon-yellow);
+    box-shadow: 0 0 15px var(--neon-yellow);
+}
+
+@keyframes neon-glow {
+    0% { text-shadow: 0 0 5px currentColor; }
+    100% { text-shadow: 0 0 10px currentColor, 0 0 15px currentColor; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Typewriter Effect */
 .typewriter.console-container {
     border-radius: 3px;
@@ -373,8 +479,8 @@ body.woodstock-mode .ascii-art {
     margin: 0 auto;
     max-width: 600px;
     text-align: left;
-    min-height: 120px;
-    max-height: 120px;
+    min-height: 150px;
+    max-height: 150px;
     display: flex;
     flex-direction: column;
 }
