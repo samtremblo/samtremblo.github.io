@@ -133,7 +133,7 @@
     "id": "silence-on-joue",
     "title": "Silence on joue!",
     "role": "Lead Developer and Creative Technologist",
-    "description": "Flagship broadcast technology ecosystem powering Quebec's most beloved quiz show. Four years of continuous innovation ensuring seamless live production, from contestant interaction systems to real-time data visualization, maintaining 99.9% uptime across hundreds of episodes.\n\n**Technical innovation:**\n- Scalable architecture handling multiple simultaneous contestant interactions\n- Live broadcast integration systems with millisecond precision timing\n- Real-time system monitoring and performance optimization (4+ years)\n\n*All photos belong to their rightful owners.*",
+    "description": "Flagship broadcast technology ecosystem powering Quebec's most beloved quiz show. Four years of continuous innovation ensuring seamless live production, from contestant interaction systems to real-time data visualization, maintaining 99.9% uptime across hundreds of episodes.\n\n**Technical innovation:**\n- Scalable architecture handling multiple simultaneous contestant interactions\n- Live broadcast integration systems with millisecond precision timing\n- Game programming\n\n*All photos belong to their rightful owners.*",
     "images": ["img/soj1.webp"],
     "year": 2025,
     "tags": ["TV show", "system architecture", "real-time", "broadcast"],
